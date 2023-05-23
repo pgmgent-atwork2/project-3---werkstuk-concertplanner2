@@ -1,4 +1,187 @@
-button {
-    background-color: red;
-    color: rebeccapurple;
+@font-face {
+    font-family: 'saelic-light';
+    src: url(../fonts/Sailec\ Light.ttf);
+}
+
+@font-face {
+    font-family: 'saelic-bold';
+    src: url(../fonts/Sailec\ Bold.ttf);
+}
+
+:root {
+    --blue: #0085E3;
+    --black: #2D2D2D;
+    --white: #FFFFFF;
+    --kaki--light: #be95646e;
+    --kaki: #BE9664;
+    --kaki--hover: #E2CFB8;
+    --red: #E94A3D;
+    --border_color: #00000018;
+    --main_color: #D9D9D9;
+    --hover_color--blue: #0044C8;
+    --hover_color--red: #C9483D;
+
+    --font-size--h1: 32px;
+    --font-size--h2: 24px;
+
+    --Font-size--XXL: 64px;
+    --font-size--XL: 32px;
+    --font-size--large: 24px;
+    --font-size--medium: 18px;
+    --font-size--light: 10px;
+
+    --spacing--large: 3rem;
+    --spacing--medium: 2rem;
+    --spacing--small: 1rem;
+
+    --gap--small: 1rem;
+}
+
+h1,
+h2 {
+    font-family: 'saelic-bold';
+}
+
+p {
+    font-family: 'saelic-light';
+}
+
+/* header */
+
+header {
+    border-bottom: 3px solid var(--border_color);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 2rem 3rem;
+}
+
+.homelogo {
+    width: 15rem;
+}
+
+.button--logout {
+    padding: 1rem 2rem;
+    color: var(--white);
+    background-color: var(--red);
+    border-radius: 10px;
+    font-size: var(--font-size--large);
+    border: none;
+}
+
+.button--logout:hover {
+    background-color: var(--hover_color--red);
+}
+
+/* sidepanel */
+
+.sidepanel {
+    background-color: var(--kaki--light);
+    border-radius: 10px;
+    width: 30%;
+    padding-top: 2rem;
+    padding-left: 2rem;
+    padding-bottom: 20rem;
+    margin: 5rem 3rem;
+}
+
+.sidepanel h1,
+.container--configuration h1 {
+    font-size: var(--font-size--XL);
+}
+
+.sidepanel ul {
+    list-style-type: none;
+    margin-top: var(--spacing--large);
+    padding-left: 0;
+}
+
+.sidepanel ul li {
+    display: flex;
+    align-items: center;
+    gap: var(--gap--small);
+    margin: var(--spacing--small) 0;
+    font-size: var(--font-size--large);
+    border-bottom: 2px solid var(--kaki);
+    padding-bottom: 1rem;
+    margin-right: 6rem;
+    padding-top: 0.5rem;
+    background: linear-gradient(to right, var(--kaki) 50%, var(--kaki--hover) 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: all .5s ease-out;
+}
+
+.sidepanel ul li:hover {
+    background-position: left bottom;
+}
+
+.sidepanel ul li:last-child {
+    border-bottom: none;
+}
+
+.list__icon {
+    width: 2rem;
+}
+
+/* main container user */
+
+.main__container--user {
+    display: flex;
+    width: 100%;
+}
+
+.container--configuration {
+    background-color: var(--kaki--light);
+    border-radius: 10px;
+    margin-top: 5rem;
+    width: 60%;
+}
+
+.container--configuration h1 {
+    padding-top: 2rem;
+    padding-left: 5rem;
+}
+
+.configuration__item a {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--white);
+    width: 80%;
+    margin: auto;
+    border-radius: 30px;
+    margin-bottom: 1rem;
+    text-decoration: none;
+}
+
+.configuration__item a p {
+    padding-right: 5rem;
+    font-size: var(--font-size--large);
+}
+
+.configuration__item a time {
+    font-size: var(--font-size--medium);
+}
+
+.image--concert {
+    width: 10rem;
+    height: 6rem;
+    transform: translateX(-4rem);
+    border-radius: 30px 0 0 30px;
+}
+
+.button--delete {
+    width: 1rem;
+    height: 1rem;
+    padding: 0.5rem;
+    border-radius: 100%;
+}
+
+.button--delete:hover {
+    background-color: var(--hover_color--red);
+    transition: all 0.5s;
 }
