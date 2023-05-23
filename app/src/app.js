@@ -25,7 +25,7 @@ const app = express();
 app.use(cookieParser());
 
 //serve static files
-app.use(express.static("client/assets"));
+app.use(express.static("client"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
