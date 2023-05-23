@@ -15,6 +15,28 @@ export default new EntitySchema({
     email: {
       type: 'varchar',
     },
-    $
-  }
+    password: {
+      type: 'varchar',
+    }
+  },
+  relations: {
+    role: {
+      target: "Role",
+      type: "many-to-one",
+      joinColumn: true,
+      inverseSide: "role",
+    },
+    meta: {
+      target: "UserMeta",
+      type: "one-to-one",
+      cascade: true,
+      inverseSide: "user",
+    },
+    data: {
+      target: "Date",
+      type: "one-to-many",
+      cascade: true,
+      inverseSide: "user",
+    }
+  },
 });
