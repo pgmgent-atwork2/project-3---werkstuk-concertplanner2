@@ -6,6 +6,7 @@
     "doc": "docs"
   },
   "scripts": {
+    "start": "nodemon ./server/app.js --config nodemon.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -16,6 +17,7 @@
   ],
   "author": "Jonas De Groote, Glen Meganck, Sten Hullebroeck",
   "license": "ISC",
+  "type": "module",
   "dependencies": {
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.2",

@@ -1,5 +1,5 @@
 // import statement
-import Express from "express";
+import express from "express";
 import path from "path";
 
 
@@ -9,7 +9,7 @@ import {
 import {
   SOURCE_PATH
 } from "./constants.js";
-import handlebarsHelpers from "./lib/handlebarsHelpers.js";
+// import handlebarsHelpers from "./lib/handlebarsHelpers.js";
 
 import {
   home
@@ -25,7 +25,7 @@ const app = express();
 app.use(cookieParser());
 
 //serve static files
-app.use(express.static("public"));
+app.use(express.static("client/assets"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
@@ -33,7 +33,7 @@ app.use(bodyParser.urlencoded({
 
 // ----------------HANDLEBARS---------------//
 const hbs = create({
-  helpers: handlebarsHelpers,
+  // helpers: handlebarsHelpers,
   extname: "hbs",
   // defaultLayout: "main",
   // layoutsDir: path.resolve("src", "views", "layouts"),
