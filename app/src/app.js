@@ -17,6 +17,20 @@ import {
 import bodyParser from "body-parser";
 import DataSource from "./lib/DataSource.js";
 import cookieParser from "cookie-parser";
+import {
+  deleteUser,
+  getSpecificUser,
+  getUsers,
+  postUser,
+  updateUser
+} from "./controllers/api/user.js";
+import {
+  deleteItem,
+  getItems,
+  getSpecificItem,
+  postItem,
+  updateItem
+} from "./controllers/api/inventory.js";
 
 //create express  app
 const app = express();
@@ -46,6 +60,22 @@ app.set("views", path.join(SOURCE_PATH, "views"));
 
 //-----------------ROUTES --------------//
 //API routes
+//user
+app.get("/api/users", getUsers);
+app.get("/api/users/:id", getSpecificUser);
+app.post("/api/users", postUser);
+app.put("/api/users", updateUser);
+app.delete("/api/users/:id", deleteUser);
+
+
+//inventory
+app.get("/api/inventory", getItems);
+app.get("/api/inventory/:id", getSpecificItem);
+app.post("/api/inventory", postItem);
+app.put("/api/inventory", updateItem);
+app.delete("/api/inventory/:id", deleteItem);
+
+
 app.get("/", home);
 const port = process.env.PORT || 3000;
 
