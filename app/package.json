@@ -6,7 +6,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "start": "nodemon ./server/app.js --config nodemon.json",
+    "start": "nodemon ./src/app.js --config nodemon.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
