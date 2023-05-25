@@ -1,0 +1,18 @@
+
+
+<section class="container-login">
+  <img src="images/bijloke_logo--red.png" alt="bijloke_logo--rood">
+  <div class="login--detail">
+    <h2>Login</h2>
+    {{>form-errors this}}
+    <form method="post" action="login" class="login--form">
+      {{#each inputs}}
+        {{>form-input this}}
+      {{/each}}
+
+      <div class="footer">
+        <input type="submit" class="btn btn-primary" value="Login">
+      </div>
+    </form>
+  </div>
+</section>

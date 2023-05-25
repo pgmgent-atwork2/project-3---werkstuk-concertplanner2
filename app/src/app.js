@@ -17,6 +17,13 @@ import {
 import bodyParser from "body-parser";
 import DataSource from "./lib/DataSource.js";
 import cookieParser from "cookie-parser";
+
+
+//import middleware
+import registerAuthentication from "./middleware/validation/registerAuthentication.js";
+import loginAuthentication from "./middleware/validation/loginAuthentication.js";
+import { jwtAuth } from "./middleware/jwtAuth.js";
+
 import {
   deleteUser,
   getSpecificUser,
@@ -31,6 +38,7 @@ import {
   postItem,
   updateItem
 } from "./controllers/api/inventory.js";
+import { login, logout, postLogin, postRegister, register } from "./controllers/authentication.js";
 
 //create express  app
 const app = express();
@@ -59,6 +67,14 @@ app.set("view engine", "hbs");
 app.set("views", path.join(SOURCE_PATH, "views"));
 
 //-----------------ROUTES --------------//
+app.get("/",jwtAuth, home);
+app.get("/login", login)
+app.get("/register", register)
+app.post("/register", registerAuthentication, postRegister, register);
+app.post("/login", loginAuthentication, postLogin, login);
+app.post("/logout", logout);
+
+
 //API routes
 //user
 app.get("/api/users", getUsers);
