@@ -3,8 +3,11 @@
 export const home = async (req, res) => {
   // get the user repository
 
-  // for DEMO, return the first user in the users table
 
-  // render the home page
-  res.render("home");
+const userRole= req.user.role.label;
+
+if(userRole === "admin"){
+  res.render("admin")}
+  else if(userRole === "user"){
+  res.render("user");}
 };

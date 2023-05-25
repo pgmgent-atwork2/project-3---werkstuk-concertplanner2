@@ -1,3 +1,10 @@
+import { validationResult } from "express-validator";
+import jwt from "jsonwebtoken";
+import DataSource from "../lib/DataSource.js";
+import bcrypt from "bcrypt";
+
+
+
 export const register = async (req, res) => {
   // errors
   const formErrors = req.formErrors;
@@ -125,7 +132,7 @@ export const postRegister = async (req, res, next) => {
       // save the user
       await userRepository.save(user);
 
-      res.redirect("/home");
+      res.redirect("/login");
     }
   } catch (e) {
     next(e.message);
