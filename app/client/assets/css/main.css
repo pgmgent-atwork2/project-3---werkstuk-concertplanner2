@@ -1,30 +1,32 @@
 @font-face {
     font-family: 'saelic-light';
-    src: url(../fonts/Sailec\ Light.ttf);
+    src: url('../fonts/sailec\ Light.woff2') format('woff2'),
+        url('../fonts/sailec\ Light.woff') format('woff');
 }
 
 @font-face {
     font-family: 'saelic-bold';
-    src: url(../fonts/Sailec\ Bold.ttf);
+    src: url('../fonts/sailec\ Bold.woff2') format('woff2'),
+        url('../fonts/sailec\ Bold.woff') format('woff');
 }
 
 :root {
-    --blue: #0085E3;
-    --black: #2D2D2D;
-    --white: #FFFFFF;
-    --kaki--light: #be95646e;
-    --kaki: #BE9664;
-    --kaki--hover: #E2CFB8;
-    --red: #E94A3D;
-    --border_color: #00000018;
-    --main_color: #D9D9D9;
-    --hover_color--blue: #0044C8;
-    --hover_color--red: #C9483D;
+    --blue: hsl(205, 100%, 45%);
+    --black: hsl(0, 0%, 18%);
+    --white: hsl(0, 0%, 100%);
+    --kaki--light: hsla(33, 41%, 57%, 0.431);
+    --kaki: hsl(33, 41%, 57%);
+    --kaki--hover: hsl(33, 42%, 80%);
+    --red: hsl(5, 80%, 58%);
+    --border_color: hsla(0, 0%, 0%, 0.094);
+    --main_color: hsl(0, 0%, 85%);
+    --hover_color--blue: hsl(220, 100%, 39%);
+    --hover_color--red: hsl(5, 56%, 51%);
 
     --font-size--h1: 32px;
     --font-size--h2: 24px;
 
-    --Font-size--XXL: 64px;
+    --font-size--XXL: 64px;
     --font-size--XL: 32px;
     --font-size--large: 24px;
     --font-size--medium: 18px;
@@ -89,7 +91,7 @@ nav {
 }
 
 .sidepanel h1,
-.container--configuration h1 {
+.panel--right h1 {
     font-size: var(--font-size--XL);
 }
 
@@ -129,24 +131,25 @@ nav {
 
 /* main container user */
 
-.main__container--user {
+.main__container--flex {
     display: flex;
     width: 100%;
 }
 
-.container--configuration {
+.panel--right {
     background-color: var(--kaki--light);
     border-radius: 10px;
     margin-top: 5rem;
     width: 60%;
 }
 
-.container--configuration h1 {
+.panel--right h1 {
     padding-top: 2rem;
     padding-left: 5rem;
 }
 
-.configuration__item a {
+.configuration__item a,
+.optreden {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -158,12 +161,14 @@ nav {
     text-decoration: none;
 }
 
-.configuration__item a p {
+.configuration__item a p,
+.optreden p {
     padding-right: 5rem;
     font-size: var(--font-size--large);
 }
 
-.configuration__item a time {
+.configuration__item a time,
+.optreden time {
     font-size: var(--font-size--medium);
 }
 
@@ -186,9 +191,119 @@ nav {
     transition: all 0.5s;
 }
 
+.btn--primary {
+    border: none;
+    background-color: var(--blue);
+    color: var(--white);
+    padding: 1rem 3rem;
+    border-radius: 30px;
+}
+
 /* login page */
 
-.container--login{
+.container--login {
     width: 50%;
     margin: auto;
+}
+
+.container__fields {
+    background-color: var(--kaki--light);
+}
+
+.button--login {
+    background-color: var(--blue);
+    color: var(--white);
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 20px;
+}
+
+/* inventory */
+
+.button--back {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: 3rem;
+}
+
+.image--back {
+    width: 2rem;
+}
+
+.container--inventory,
+.main--inventory {
+    background-color: var(--main_color);
+    height: 100%;
+}
+
+.container--inventory h1 {
+    margin-left: 6rem;
+}
+
+.inventory__filter,
+.inventory__search {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pills {
+    display: flex;
+    width: 30%;
+    justify-content: space-around;
+    list-style-type: none;
+}
+
+.pills li {
+    background-color: var(--white);
+    border: 2px solid var(--black);
+    padding: 0.5rem;
+    border-radius: 20px;
+}
+
+.button--add {
+    background-color: var(--blue);
+    color: var(--white);
+    font-size: var(--font-size--large);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+}
+
+.searchbar {
+    padding: 0.5rem 0;
+}
+
+.inventory__search {
+    gap: 1rem;
+}
+
+.inventory {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 2rem;
+}
+
+.inventory_item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--kaki--light);
+    border-radius: 20px;
+    padding-right: 1rem
+}
+
+.item__image {
+    width: 4rem;
+    border-radius: 20px 0 0 20px;
+}
+
+.button--edit{
+    background-color: var(--red);
+    padding: 0.5rem;
+    border-radius: 100%;
+    border: none;
+    color: var(--white);
 }
