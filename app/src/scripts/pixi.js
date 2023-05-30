@@ -43,16 +43,31 @@ let moved = false;
 
 function addObject(type) {
   let obj;
-  if (type === 'blue') {
-    let objIndex = inventoryData.findIndex((item) => item.name === 'pupiters');
-    inventoryData[objIndex].count--;
-    obj = PIXI.Sprite.from('./images/blue.png');
-    obj.name = 'blue';
-    console.log(inventoryData[objIndex].count);
-  } else if (type === 'ship') {
-    obj = PIXI.Sprite.from('./images/sample.png');
+  let objIndex = inventoryData.findIndex((item) => item.name === type);
+  inventoryData[objIndex].count--;
+  obj = new PIXI.Sprite(PIXI.Texture.WHITE);
+  obj.tint = 0x0000ff;
+  obj.name = type;
+  console.log(inventoryData[objIndex].count);
+
+  if (type === 'pupiters') {
+    obj.tint = 0x0000ff;
+  } else if (type === 'muziekantenstoelen') {
+    obj.tint = 0xff0000;
   } else if (type === 'orkeststoel') {
-    obj = PIXI.Sprite.from('./images/orkeststoel.jpg');
+    obj.tint = 0x00ff00;
+  } else if (type === 'pianostoelen') {
+    obj.tint = 0xffff00;
+  } else if (type === 'podiumelement S') {
+    obj.tint = 0xff00ff;
+  } else if (type === 'podiumelement M') {
+    obj.tint = 0x00ffff;
+  } else if (type === 'podiumelement L') {
+    obj.tint = 0xff8000;
+  } else if (type === 'podiumelement XL') {
+    obj.tint = 0x000000;
+  } else if (type === 'piano steinway D') {
+    obj.tint = 0x808080;
   }
 
   objects.push(obj);
@@ -89,13 +104,11 @@ function onDragEnd() {
   if (draggingObj) {
     if (moved === false) {
       if (window.confirm('do you want to delete this object?')) {
-        if (draggingObj.name === 'blue') {
-          let objIndex = inventoryData.findIndex(
-            (item) => item.name === 'pupiters'
-          );
-          inventoryData[objIndex].count++;
-          console.log(inventoryData[objIndex].count);
-        }
+        let objIndex = inventoryData.findIndex(
+          (item) => item.name === draggingObj.name
+        );
+        inventoryData[objIndex].count++;
+        console.log(inventoryData[objIndex].count);
         objects.splice(objects.indexOf(draggingObj), 1);
         draggingObj.parent.removeChild(draggingObj).destroy();
       }
@@ -143,16 +156,14 @@ function onDragMove(ev) {
       }
     }
     if (draggingObj.x > app.screen.width - 10) {
-      if (draggingObj.name === 'blue') {
-        let objIndex = inventoryData.findIndex(
-          (item) => item.name === 'pupiters'
-        );
-        inventoryData[objIndex].count++;
-        console.log(inventoryData[objIndex].count);
-      }
+      let objIndex = inventoryData.findIndex(
+        (item) => item.name === draggingObj.name
+      );
+      inventoryData[objIndex].count++;
+      console.log(inventoryData[objIndex].count);
       draggingObj.dragging = false;
       objects.splice(objects.indexOf(draggingObj), 1);
-      draggingObj.parent.removeChild(this).destroy();
+      draggingObj.parent.removeChild(draggingObj).destroy();
       draggingObj = null;
     } else if (draggingObj.x <= draggingObj.width / 2) {
       draggingObj.x = draggingObj.width / 2;

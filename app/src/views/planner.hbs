@@ -12,7 +12,7 @@
       {{#each inventoryData as |item|}}
         {{#if item.name}}
           <li>
-            <button onclick="addObject('{{item.name}}')" amount={{item.count}}>{{item.name}}</button>
+            <button onclick="addObject('{{item.name}}', {{item.count}})">{{item.name}}</button>
           </li>
         {{/if}}
         
