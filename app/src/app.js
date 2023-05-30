@@ -19,11 +19,7 @@ import cookieParser from "cookie-parser";
 import registerAuthentication from './middleware/validation/registerAuthentication.js';
 import loginAuthentication from './middleware/validation/loginAuthentication.js';
 import { jwtAuth } from './middleware/jwtAuth.js';
-import registerAuthentication from "./middleware/validation/registerAuthentication.js";
-import loginAuthentication from "./middleware/validation/loginAuthentication.js";
-import {
-  jwtAuth
-} from "./middleware/jwtAuth.js";
+
 
 import {
   deleteUser,
@@ -46,15 +42,7 @@ import {
   postRegister,
   register,
 } from './controllers/authentication.js';
-  updateItem
-} from "./controllers/api/inventory.js";
-import {
-  login,
-  logout,
-  postLogin,
-  postRegister,
-  register
-} from "./controllers/authentication.js";
+  
 
 //create express  app
 const app = express();
