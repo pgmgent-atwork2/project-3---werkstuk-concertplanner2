@@ -1,0 +1,28 @@
+{{> header}}
+
+<main class="main--inventory">
+
+    <article class="container--inventory">
+        <div class="button--back">
+            <a href="#"><img class="image--back" src="images/back-button.png" alt="" /></a>
+            <h2>Ga naar home</h2>
+        </div>
+
+        <h1>Inventaris</h1>
+        <section class="inventory__filter">
+            <ul class="pills">
+                <li>stoelen</li>
+                <li>instrumenten</li>
+                <li>pupiters</li>
+                <li>podiumelementen</li>
+            </ul>
+            <div class="inventory__search">
+                <input class="searchbar" type="search" name="search" id="search" />
+            </div>
+        </section>
+        {{> inventory}}
+
+
+    </article>
+
+</main>
