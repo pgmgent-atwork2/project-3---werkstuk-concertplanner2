@@ -44,37 +44,41 @@ let moved = false;
 function addObject(type) {
   let obj;
   let objIndex = inventoryData.findIndex((item) => item.name === type);
-  inventoryData[objIndex].count--;
-  obj = new PIXI.Sprite(PIXI.Texture.WHITE);
-  obj.tint = 0x0000ff;
-  obj.name = type;
-  console.log(inventoryData[objIndex].count);
-
-  if (type === 'pupiters') {
+  if (inventoryData[objIndex].count <= 0) {
+    return alert('no more objects of this type');
+  } else {
+    inventoryData[objIndex].count--;
+    obj = new PIXI.Sprite(PIXI.Texture.WHITE);
     obj.tint = 0x0000ff;
-  } else if (type === 'muziekantenstoelen') {
-    obj.tint = 0xff0000;
-  } else if (type === 'orkeststoel') {
-    obj.tint = 0x00ff00;
-  } else if (type === 'pianostoelen') {
-    obj.tint = 0xffff00;
-  } else if (type === 'podiumelement S') {
-    obj.tint = 0xff00ff;
-  } else if (type === 'podiumelement M') {
-    obj.tint = 0x00ffff;
-  } else if (type === 'podiumelement L') {
-    obj.tint = 0xff8000;
-  } else if (type === 'podiumelement XL') {
-    obj.tint = 0x000000;
-  } else if (type === 'piano steinway D') {
-    obj.tint = 0x808080;
-  }
+    obj.name = type;
+    console.log(inventoryData[objIndex].count);
 
-  objects.push(obj);
-  console.log(objects);
-  // make the change appear on the screen
-  makeObjectsDraggable(obj);
-  app.stage.addChild(obj);
+    if (type === 'pupiters') {
+      obj.tint = 0x0000ff;
+    } else if (type === 'muziekantenstoelen') {
+      obj.tint = 0xff0000;
+    } else if (type === 'orkeststoel') {
+      obj.tint = 0x00ff00;
+    } else if (type === 'pianostoelen') {
+      obj.tint = 0xffff00;
+    } else if (type === 'podiumelement S') {
+      obj.tint = 0xff00ff;
+    } else if (type === 'podiumelement M') {
+      obj.tint = 0x00ffff;
+    } else if (type === 'podiumelement L') {
+      obj.tint = 0xff8000;
+    } else if (type === 'podiumelement XL') {
+      obj.tint = 0x000000;
+    } else if (type === 'piano steinway D') {
+      obj.tint = 0x808080;
+    }
+
+    objects.push(obj);
+    console.log(objects);
+    // make the change appear on the screen
+    makeObjectsDraggable(obj);
+    app.stage.addChild(obj);
+  }
 }
 
 function makeObjectsDraggable(obj) {
