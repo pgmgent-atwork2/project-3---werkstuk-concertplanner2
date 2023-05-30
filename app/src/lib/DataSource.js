@@ -1,13 +1,12 @@
-import dotenv from "dotenv";
+/* eslint-disable no-undef */
+import dotenv from 'dotenv';
 
 // we read some environment variables from the .env file, so we need to load it
 dotenv.config();
-import {
-  DataSource
-} from "typeorm";
+import { DataSource } from 'typeorm';
 
 // import van de navigation item entity
-import entities from "../models/index.js";
+import entities from '../models/index.js';
 
 const DS = new DataSource({
   type: process.env.DATABASE_TYPE,
