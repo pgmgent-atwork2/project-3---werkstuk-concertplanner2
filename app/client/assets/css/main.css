@@ -104,8 +104,6 @@ nav {
 }
 
 .sidepanel ul li {
-    display: flex;
-    align-items: center;
     gap: var(--gap--small);
     margin: var(--spacing--small) 0;
     font-size: var(--font-size--large);
@@ -117,6 +115,14 @@ nav {
     background-size: 200% 100%;
     background-position: right bottom;
     transition: all .5s ease-out;
+}
+
+.sidepanel ul li a {
+    text-decoration: none;
+    color: (var(--black));
+    display: flex;
+    align-items: center;
+    gap: var(--gap--small);
 }
 
 .sidepanel ul li:hover {
@@ -264,7 +270,7 @@ nav {
     border-radius: 20px;
 }
 
-.button--add {
+.button--add, .button--contact {
     background-color: var(--blue);
     color: var(--white);
     font-size: var(--font-size--large);
@@ -302,10 +308,37 @@ nav {
     border-radius: 20px 0 0 20px;
 }
 
-.button--edit{
+.button--edit {
     background-color: var(--red);
     padding: 0.5rem;
     border-radius: 100%;
     border: none;
     color: var(--white);
+}
+
+footer {
+    border-top: 3px solid var(--border_color);
+    margin-top: var(--spacing--large);
+}
+
+footer h2{
+    margin-left: 1.5rem;
+}
+
+.footer__container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(231, 231, 231);
+    padding: 3rem 0;
+}
+
+.socialmedia--icon {
+    width: 3rem;
+}
+
+.footer__reference{
+    background-color: rgb(171, 171, 171);
+    text-align: center;
+    margin: 0;
 }
