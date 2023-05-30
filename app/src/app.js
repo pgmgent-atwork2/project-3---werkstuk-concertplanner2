@@ -1,7 +1,6 @@
 // import statement
 import express from 'express';
 import path from 'path';
-import * as PIXI from 'pixi.js';
 
 import { create } from 'express-handlebars';
 import { SOURCE_PATH } from './constants.js';
@@ -53,7 +52,7 @@ app.use(
     extended: true,
   })
 );
-app.use('/scripts', express.static(path.join(SOURCE_PATH, 'scripts')));
+app.use('/scripts', express.static(path.join(SOURCE_PATH, '/scripts')));
 
 // ----------------HANDLEBARS---------------//
 const hbs = create({
