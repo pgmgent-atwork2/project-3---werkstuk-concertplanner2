@@ -1,25 +1,31 @@
 // import statement
 import express from 'express';
 import path from 'path';
+import * as PIXI from 'pixi.js';
 
-import { create } from 'express-handlebars';
-import { SOURCE_PATH } from './constants.js';
+import {
+  create
+} from 'express-handlebars';
+import {
+  SOURCE_PATH
+} from './constants.js';
 // import handlebarsHelpers from "./lib/handlebarsHelpers.js";
 
 import {
   home,
-  inventory
-} from "./controllers/dashboard.js";
-import bodyParser from "body-parser";
-import DataSource from "./lib/DataSource.js";
-import cookieParser from "cookie-parser";
-
+  inventory,
+  planner
+} from './controllers/dashboard.js';
+import bodyParser from 'body-parser';
+import DataSource from './lib/DataSource.js';
+import cookieParser from 'cookie-parser';
 
 //import middleware
 import registerAuthentication from './middleware/validation/registerAuthentication.js';
 import loginAuthentication from './middleware/validation/loginAuthentication.js';
-import { jwtAuth } from './middleware/jwtAuth.js';
-
+import {
+  jwtAuth
+} from './middleware/jwtAuth.js';
 
 import {
   deleteUser,
@@ -42,7 +48,6 @@ import {
   postRegister,
   register,
 } from './controllers/authentication.js';
-  
 
 //create express  app
 const app = express();
@@ -58,6 +63,7 @@ app.use(
     extended: true,
   })
 );
+app.use('/scripts', express.static(path.join(SOURCE_PATH, 'scripts')));
 
 // ----------------HANDLEBARS---------------//
 const hbs = create({
@@ -73,14 +79,14 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(SOURCE_PATH, 'views'));
 
 //-----------------ROUTES --------------//
-app.get("/", jwtAuth, home);
-app.get("/login", login)
-app.get("/register", register)
-app.post("/register", registerAuthentication, postRegister, register);
-app.post("/login", loginAuthentication, postLogin, login);
-app.post("/logout", logout);
-app.get("/inventory", jwtAuth, inventory)
-
+app.get('/', jwtAuth, home);
+app.get('/login', login);
+app.get('/register', register);
+app.post('/register', registerAuthentication, postRegister, register);
+app.post('/login', loginAuthentication, postLogin, login);
+app.post('/logout', logout);
+app.get('/inventory', jwtAuth, inventory);
+app.get('/planner', jwtAuth, planner);
 
 //API routes
 //user
@@ -102,16 +108,19 @@ const port = process.env.PORT || 3000;
 
 //start the app
 if (process.env.NODE_ENV !== 'test') {
-  DataSource.initialize()
-    .then(() => {
-      // start the server
-      app.listen(port, () => {
-        console.log(`server started at port http://localhost:${port}`);
+  if (process.env.NODE_ENV !== 'test') {
+    DataSource.initialize()
+      .then(() => {
+        // start the server
+        app.listen(port, () => {
+          console.log(`server started at port http://localhost:${port}`);
+        });
+      })
+      .catch(function (error) {
+        console.log('Error: ', error);
+        console.log('Error: ', error);
       });
-    })
-    .catch(function (error) {
-      console.log('Error: ', error);
-    });
+  }
 }
 
 export default app;

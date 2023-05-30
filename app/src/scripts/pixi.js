@@ -1,5 +1,5 @@
 // importing pixi.js
-import * as PIXI from 'pixi.js';
+// import * as PIXI from 'pixi.js';
 
 // Create the Pixi application and create a canvas to work with
 let cWidth = (window.innerWidth / 100) * 70;
@@ -16,20 +16,20 @@ let app = new PIXI.Application({
 });
 document.body.appendChild(app.view);
 
-let bg = PIXI.Sprite.from('zaal.png');
+let bg = PIXI.Sprite.from('./images/zaal.png');
 bg.width = app.screen.width;
 bg.height = app.screen.height;
 
 // create the draggable objects
-let obj1 = PIXI.Sprite.from('blue.png');
+let obj1 = PIXI.Sprite.from('./images/blue.png');
 
-let obj2 = PIXI.Sprite.from('blue.png');
+let obj2 = PIXI.Sprite.from('./images/blue.png');
 
-let obj3 = PIXI.Sprite.from('blue.png');
+let obj3 = PIXI.Sprite.from('./images/blue.png');
 
-let obj4 = PIXI.Sprite.from('blue.png');
+let obj4 = PIXI.Sprite.from('./images/blue.png');
 
-let obj5 = PIXI.Sprite.from('blue.png');
+let obj5 = PIXI.Sprite.from('./images/blue.png');
 
 // create variable for dragged object
 let objects = [obj1, obj2, obj3, obj4, obj5];
@@ -44,9 +44,9 @@ let moved = false;
 function addObject(type) {
   let obj;
   if (type === 'blue') {
-    obj = PIXI.Sprite.from('blue.png');
+    obj = PIXI.Sprite.from('./images/blue.png');
   } else if (type === 'ship') {
-    obj = PIXI.Sprite.from('sample.png');
+    obj = PIXI.Sprite.from('./images/sample.png');
   }
   objects.push(obj);
   console.log(objects);
