@@ -4,9 +4,21 @@
     <button id="save" onclick="downloadPDF()" class="no-print">
       Save as PDF
     </button>
-    <button onclick="addObject('blue')">add object</button>
+    <button onclick="addObject('blue', 90)">add object</button>
     <button onclick="addObject('ship')">add ship</button>
+    <button onclick="addObject('orkeststoel')">add orkeststoel</button>
 
+    <ul>
+      {{#each inventoryData as |item|}}
+        {{#if item.name}}
+          <li>
+            <button onclick="addObject('{{item.name}}')" amount={{item.count}}>{{item.name}}</button>
+          </li>
+        {{/if}}
+        
+      {{/each}}
+    </ul>
+    <script>window.inventory = {{{jsData}}}</script>
     <script src="https://cdn.jsdelivr.net/npm/pixi.js@7.x/dist/pixi.min.js"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"

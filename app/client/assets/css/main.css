@@ -41,15 +41,14 @@
     --gap--small: 1rem;
 }
 
-body {
-    font-family: 'saelic-light';
-}
-
 h1,
 h2 {
     font-family: 'saelic-bold';
 }
 
+p {
+    font-family: 'saelic-light';
+}
 
 /* header */
 
@@ -280,8 +279,7 @@ nav {
     border-radius: 20px;
 }
 
-.button--add,
-.button--contact {
+.button--add, .button--contact {
     background-color: var(--blue);
     color: var(--white);
     font-size: var(--font-size--large);
@@ -336,7 +334,7 @@ footer {
     margin-top: var(--spacing--large);
 }
 
-footer h2 {
+footer h2{
     margin-left: 1.5rem;
 }
 
@@ -352,7 +350,7 @@ footer h2 {
     width: 3rem;
 }
 
-.footer__reference {
+.footer__reference{
     background-color: rgb(171, 171, 171);
     text-align: center;
     margin: 0;
