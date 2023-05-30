@@ -2,11 +2,19 @@
 import express from 'express';
 import path from 'path';
 
-import { create } from 'express-handlebars';
-import { SOURCE_PATH } from './constants.js';
+import {
+  create
+} from 'express-handlebars';
+import {
+  SOURCE_PATH
+} from './constants.js';
 // import handlebarsHelpers from "./lib/handlebarsHelpers.js";
 
-import { home, inventory, planner } from './controllers/dashboard.js';
+import {
+  home,
+  inventory,
+  planner
+} from './controllers/dashboard.js';
 import bodyParser from 'body-parser';
 import DataSource from './lib/DataSource.js';
 import cookieParser from 'cookie-parser';
@@ -14,7 +22,12 @@ import cookieParser from 'cookie-parser';
 //import middleware
 import registerAuthentication from './middleware/validation/registerAuthentication.js';
 import loginAuthentication from './middleware/validation/loginAuthentication.js';
-import { jwtAuth } from './middleware/jwtAuth.js';
+import {
+  jwtAuth
+} from './middleware/jwtAuth.js';
+
+import swaggerUi from 'swagger-ui-express';
+import swaggerDefinition from "./docs/swagger.js";
 
 import {
   deleteUser,
@@ -52,7 +65,7 @@ app.use(
     extended: true,
   })
 );
-app.use('/scripts', express.static(path.join(SOURCE_PATH, 'scripts')));
+app.use('/scripts', express.static(path.join(SOURCE_PATH, '/scripts')));
 
 // ----------------HANDLEBARS---------------//
 const hbs = create({
@@ -94,6 +107,8 @@ app.delete('/api/inventory/:id', deleteItem);
 
 app.get('/', home);
 const port = process.env.PORT || 3000;
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDefinition));
 
 //start the app
 if (process.env.NODE_ENV !== 'test') {

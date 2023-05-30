@@ -19,6 +19,7 @@ export const inventory = async (req, res) => {
 
   res.render(`${userRole}/inventory`, {
     inventoryData,
+    jsData: JSON.stringify(inventoryData),
   });
 };
 
@@ -28,5 +29,6 @@ export const planner = async (req, res) => {
 
   res.render('planner', {
     inventoryData,
+    jsData: JSON.stringify(inventoryData),
   });
 };

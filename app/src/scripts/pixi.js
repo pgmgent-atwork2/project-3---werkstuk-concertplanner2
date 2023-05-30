@@ -1,14 +1,16 @@
-// importing pixi.js
-// import * as PIXI from 'pixi.js';
-
-// Create the Pixi application and create a canvas to work with
+// constants
 let cWidth = (window.innerWidth / 100) * 70;
 console.log(cWidth);
 let cHeight = cWidth;
 let scale = cWidth / 34.50867052;
 
-console.log(scale);
+// variables
+// let blue = 90;
+let spriteCount = {};
+const inventoryData = window.inventory;
+console.log(inventoryData);
 
+// Create the Pixi application and create a canvas to work with
 let app = new PIXI.Application({
   background: '#000000',
   width: cWidth,
@@ -41,13 +43,19 @@ app.stage.on('pointerup', onDragEnd);
 app.stage.on('pointerupoutside', onDragEnd);
 let moved = false;
 
-function addObject(type) {
+function addObject(type, amount) {
   let obj;
-  if (type === 'blue') {
+  if (type === 'blue' && amount > 0) {
+    amount--;
     obj = PIXI.Sprite.from('./images/blue.png');
+    obj.name = 'blue';
+    console.log(amount);
   } else if (type === 'ship') {
     obj = PIXI.Sprite.from('./images/sample.png');
+  } else if (type === 'orkeststoel') {
+    obj = PIXI.Sprite.from('./images/orkeststoel.jpg');
   }
+
   objects.push(obj);
   console.log(objects);
   // make the change appear on the screen
@@ -82,6 +90,11 @@ function onDragEnd() {
   if (draggingObj) {
     if (moved === false) {
       if (window.confirm('do you want to delete this object?')) {
+        if (draggingObj.name === 'blue') {
+          blue++;
+          console.log(blue);
+        }
+        objects.splice(objects.indexOf(draggingObj), 1);
         draggingObj.parent.removeChild(draggingObj).destroy();
       }
     }
@@ -128,6 +141,10 @@ function onDragMove(ev) {
       }
     }
     if (draggingObj.x > app.screen.width - 10) {
+      if (draggingObj.name === 'blue') {
+        blue++;
+        console.log(blue);
+      }
       draggingObj.dragging = false;
       objects.splice(objects.indexOf(draggingObj), 1);
       draggingObj.parent.removeChild(this).destroy();
@@ -145,7 +162,7 @@ function onDragMove(ev) {
 function hitTestRectangle(r1, r2) {
   // use bounding box to check intersection
 
-  console.log(r1.getBounds().intersects(r2.getBounds()));
+  // console.log(r1.getBounds().intersects(r2.getBounds()));
   const hit = r1.getBounds().intersects(r2.getBounds());
   return hit;
 }
