@@ -16,6 +16,9 @@ import cookieParser from 'cookie-parser';
 import registerAuthentication from './middleware/validation/registerAuthentication.js';
 import loginAuthentication from './middleware/validation/loginAuthentication.js';
 import { jwtAuth } from './middleware/jwtAuth.js';
+import registerAuthentication from './middleware/validation/registerAuthentication.js';
+import loginAuthentication from './middleware/validation/loginAuthentication.js';
+import { jwtAuth } from './middleware/jwtAuth.js';
 
 import {
   deleteUser,
@@ -98,16 +101,19 @@ const port = process.env.PORT || 3000;
 
 //start the app
 if (process.env.NODE_ENV !== 'test') {
-  DataSource.initialize()
-    .then(() => {
-      // start the server
-      app.listen(port, () => {
-        console.log(`server started at port http://localhost:${port}`);
+  if (process.env.NODE_ENV !== 'test') {
+    DataSource.initialize()
+      .then(() => {
+        // start the server
+        app.listen(port, () => {
+          console.log(`server started at port http://localhost:${port}`);
+        });
+      })
+      .catch(function (error) {
+        console.log('Error: ', error);
+        console.log('Error: ', error);
       });
-    })
-    .catch(function (error) {
-      console.log('Error: ', error);
-    });
+  }
 }
 
 export default app;
