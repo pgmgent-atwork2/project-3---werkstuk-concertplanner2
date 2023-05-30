@@ -18,6 +18,12 @@ export default new EntitySchema({
     },
     count: {
       type: 'int',
+    },
+    length: {
+      type: 'int',
+    },
+    width: {
+      type: 'int',
     }
   },
 });
