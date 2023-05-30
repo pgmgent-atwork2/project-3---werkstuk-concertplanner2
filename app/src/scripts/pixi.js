@@ -5,10 +5,8 @@ let cHeight = cWidth;
 let scale = cWidth / 34.50867052;
 
 // variables
-// let blue = 90;
-let spriteCount = {};
 const inventoryData = window.inventory;
-console.log(inventoryData);
+console.table(inventoryData);
 
 // Create the Pixi application and create a canvas to work with
 let app = new PIXI.Application({
@@ -23,18 +21,18 @@ bg.width = app.screen.width;
 bg.height = app.screen.height;
 
 // create the draggable objects
-let obj1 = PIXI.Sprite.from('./images/blue.png');
+// let obj1 = PIXI.Sprite.from('./images/blue.png');
 
-let obj2 = PIXI.Sprite.from('./images/blue.png');
+// let obj2 = PIXI.Sprite.from('./images/blue.png');
 
-let obj3 = PIXI.Sprite.from('./images/blue.png');
+// let obj3 = PIXI.Sprite.from('./images/blue.png');
 
-let obj4 = PIXI.Sprite.from('./images/blue.png');
+// let obj4 = PIXI.Sprite.from('./images/blue.png');
 
-let obj5 = PIXI.Sprite.from('./images/blue.png');
+// let obj5 = PIXI.Sprite.from('./images/blue.png');
 
 // create variable for dragged object
-let objects = [obj1, obj2, obj3, obj4, obj5];
+let objects = [];
 console.log(objects);
 let draggingObj = null;
 app.stage.interactive = true;
@@ -43,13 +41,14 @@ app.stage.on('pointerup', onDragEnd);
 app.stage.on('pointerupoutside', onDragEnd);
 let moved = false;
 
-function addObject(type, amount) {
+function addObject(type) {
   let obj;
-  if (type === 'blue' && amount > 0) {
-    amount--;
+  if (type === 'blue') {
+    let objIndex = inventoryData.findIndex((item) => item.name === 'pupiters');
+    inventoryData[objIndex].count--;
     obj = PIXI.Sprite.from('./images/blue.png');
     obj.name = 'blue';
-    console.log(amount);
+    console.log(inventoryData[objIndex].count);
   } else if (type === 'ship') {
     obj = PIXI.Sprite.from('./images/sample.png');
   } else if (type === 'orkeststoel') {
@@ -91,8 +90,11 @@ function onDragEnd() {
     if (moved === false) {
       if (window.confirm('do you want to delete this object?')) {
         if (draggingObj.name === 'blue') {
-          blue++;
-          console.log(blue);
+          let objIndex = inventoryData.findIndex(
+            (item) => item.name === 'pupiters'
+          );
+          inventoryData[objIndex].count++;
+          console.log(inventoryData[objIndex].count);
         }
         objects.splice(objects.indexOf(draggingObj), 1);
         draggingObj.parent.removeChild(draggingObj).destroy();
@@ -142,8 +144,11 @@ function onDragMove(ev) {
     }
     if (draggingObj.x > app.screen.width - 10) {
       if (draggingObj.name === 'blue') {
-        blue++;
-        console.log(blue);
+        let objIndex = inventoryData.findIndex(
+          (item) => item.name === 'pupiters'
+        );
+        inventoryData[objIndex].count++;
+        console.log(inventoryData[objIndex].count);
       }
       draggingObj.dragging = false;
       objects.splice(objects.indexOf(draggingObj), 1);
