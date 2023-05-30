@@ -41,17 +41,14 @@
     --gap--small: 1rem;
 }
 
-
-body {
-    font-family: 'saelic-light';
-}
-
 h1,
 h2 {
     font-family: 'saelic-bold';
 }
 
-
+p {
+    font-family: 'saelic-light';
+}
 
 /* header */
 
@@ -229,8 +226,7 @@ nav {
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin-left: 4rem;
-    margin-bottom: 3rem;
+    margin-left: 3rem;
 }
 
 .image--back {
@@ -244,12 +240,7 @@ nav {
 }
 
 .container--inventory h1 {
-    margin-left: 4rem;
-    margin-bottom: 1rem;
-}
-
-.inventory__filter {
-    margin: 2rem 4rem;
+    margin-left: 6rem;
 }
 
 .inventory__filter,
@@ -262,9 +253,8 @@ nav {
 .pills {
     display: flex;
     width: 30%;
-    justify-content: space-between;
+    justify-content: space-around;
     list-style-type: none;
-    padding: 0;
 }
 
 .pills li {
@@ -294,29 +284,25 @@ nav {
 .inventory {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    margin: 2rem 4rem;
-    gap: 1rem;
+    justify-content: space-around;
+    margin-top: 2rem;
 }
 
 .inventory_item {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 0.5rem;
     background-color: var(--kaki--light);
     border-radius: 20px;
-    padding-right: 1rem;
-    width: 23%;
-    height: 6rem;
+    padding-right: 1rem
 }
 
 .item__image {
-    height: 100%;
+    width: 4rem;
     border-radius: 20px 0 0 20px;
 }
 
-.button--edit {
+.button--edit{
     background-color: var(--red);
     padding: 0.5rem;
     border-radius: 100%;
