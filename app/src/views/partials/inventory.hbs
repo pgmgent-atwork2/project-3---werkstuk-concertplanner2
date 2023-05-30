@@ -1,8 +1,9 @@
-<section class="inventory">
-  {{#each inventoryData}}<div class="inventory_item">
-    <img class="item__image" src="images/orkeststoel.jpg" alt="" />
-    <p>{{name}}</p>
-    <sub>{{count}}</sub>
-    <button class="button--edit">edit</button>
-  </div>{{/each}}
+<section class='inventory'>
+  {{#each inventoryData}}<div class='inventory_item'>
+      <img class='item__image' src='images/orkeststoel.jpg' alt='' />
+      <p>{{name}}</p>
+      <sub>{{count}}</sub>
+      <span class='infobox--size'>{{width}}m x {{length}}m</span>
+      <button class='button--edit'>edit</button>
+    </div>{{/each}}
 </section>

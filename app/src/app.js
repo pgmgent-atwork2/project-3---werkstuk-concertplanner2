@@ -1,7 +1,6 @@
 // import statement
 import express from 'express';
 import path from 'path';
-import * as PIXI from 'pixi.js';
 
 import { create } from 'express-handlebars';
 import { SOURCE_PATH } from './constants.js';
