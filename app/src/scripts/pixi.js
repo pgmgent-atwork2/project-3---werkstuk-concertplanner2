@@ -15,7 +15,8 @@ let app = new PIXI.Application({
   width: cWidth,
   height: cHeight,
 });
-document.body.appendChild(app.view);
+// append the canvas to main
+document.getElementById('canvas').appendChild(app.view);
 
 let bg = PIXI.Sprite.from('./images/zaal.png');
 bg.width = app.screen.width;

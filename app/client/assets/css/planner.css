@@ -1,0 +1,33 @@
+.box {
+  display: flex;
+}
+
+.box ul {
+  list-style: none;
+  padding: 0;
+}
+
+.box .planner-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0rem 3rem;
+  margin-top: 0;
+  gap: 0.5rem;
+}
+
+.planner-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem 2rem;
+
+  border-radius: 10px;
+
+  border: none;
+}
+
+.planner-list__title {
+  width: 9.5rem;
+}
