@@ -32,9 +32,7 @@ export const updateItem = async (req, res, next) => {
     const inventoryRepository = DataSource.getRepository("inventory");
     const inventory = await inventoryRepository.findOneBy({
       id: req.body.changeName,
-
     });
-    console.log(inventory)
     const newItem = {
       ...inventory,
       ...req.body
