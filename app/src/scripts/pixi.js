@@ -3,6 +3,7 @@ let cWidth = (window.innerWidth / 100) * 70;
 console.log(cWidth);
 let cHeight = cWidth;
 let scale = cWidth / 34.50867052;
+console.log(scale);
 
 // variables
 const inventoryData = window.inventory;
@@ -41,7 +42,8 @@ app.stage.on('pointerup', onDragEnd);
 app.stage.on('pointerupoutside', onDragEnd);
 let moved = false;
 
-function addObject(type) {
+function addObject(type, width, height, rotate) {
+  console.log(width, height);
   let obj;
   let objIndex = inventoryData.findIndex((item) => item.name === type);
   if (inventoryData[objIndex].count <= 0) {
@@ -76,19 +78,27 @@ function addObject(type) {
     objects.push(obj);
     console.log(objects);
     // make the change appear on the screen
-    makeObjectsDraggable(obj);
+    makeObjectsDraggable(obj, width, height, type);
     app.stage.addChild(obj);
   }
 }
 
-function makeObjectsDraggable(obj) {
+function makeObjectsDraggable(obj, width, height, type) {
   obj.interactive = true;
   obj.cursor = 'pointer';
   obj.buttonMode = true;
-  obj.width = 1 * scale;
-  obj.height = 1.125 * scale;
+
+  // obj.width = 1 * scale;
+  obj.width = width * 2 * scale;
+  obj.height = height * 2 * scale;
+  if (document.getElementById(`${type}`).checked) {
+    // switch width and height
+    obj.width = height * 2 * scale;
+    obj.height = width * 2 * scale;
+  }
   obj.anchor.set(0.5);
-  obj.position.set(obj.width + 5, 5 + obj.height);
+  // obj.position.set(obj.width + 5, 5 + obj.height);
+  obj.position.set(100, 100);
   obj.on('pointerdown', onDragStart, obj).on('pointermove', onDragMove);
 }
 

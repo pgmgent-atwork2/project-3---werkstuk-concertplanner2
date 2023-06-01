@@ -37,11 +37,11 @@ import {
   updateUser,
 } from './controllers/api/user.js';
 import {
-  deleteItem,
+  deleteItem as deleteItemAPI,
   getItems,
   getSpecificItem,
-  postItem,
-  updateItem,
+  postItem as postItemAPI,
+  updateItem as updateItemAPI,
 } from './controllers/api/inventory.js';
 import {
   login,
@@ -50,6 +50,11 @@ import {
   postRegister,
   register,
 } from './controllers/authentication.js';
+import {
+  deleteItem,
+  postItem,
+  updateItem
+} from './controllers/inventory.js';
 
 //create express  app
 const app = express();
@@ -89,6 +94,9 @@ app.post('/login', loginAuthentication, postLogin, login);
 app.post('/logout', logout);
 app.get('/inventory', jwtAuth, inventory);
 app.get('/planner', jwtAuth, planner);
+app.post('/postItem', jwtAuth, postItem, inventory)
+app.post('/changeItem/:id', jwtAuth, updateItem, inventory)
+app.post('/deleteItem/:id', jwtAuth, deleteItem, inventory)
 
 //API routes
 //user
@@ -101,9 +109,9 @@ app.delete('/api/users/:id', deleteUser);
 //inventory
 app.get('/api/inventory', getItems);
 app.get('/api/inventory/:id', getSpecificItem);
-app.post('/api/inventory', postItem);
-app.put('/api/inventory', updateItem);
-app.delete('/api/inventory/:id', deleteItem);
+app.post('/api/inventory', postItemAPI);
+app.put('/api/inventory', updateItemAPI);
+app.delete('/api/inventory/:id', deleteItemAPI);
 
 app.get('/', home);
 const port = process.env.PORT || 3000;

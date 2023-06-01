@@ -293,7 +293,8 @@ nav {
 }
 
 .searchbar {
-    padding: 0.5rem 0;
+    padding: 0.5rem;
+    border-radius: 2rem;
 }
 
 .inventory__search {
@@ -303,7 +304,6 @@ nav {
 .inventory {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     margin: 2rem 4rem;
     gap: 1rem;
 }
@@ -318,7 +318,7 @@ nav {
     border-radius: 20px;
     padding-right: 1rem;
     height: 5rem;
-    width: 22%;
+    width: 24%;
 }
 
 .item__image {
