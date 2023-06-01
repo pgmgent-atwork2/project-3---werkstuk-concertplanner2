@@ -220,7 +220,8 @@ nav {
     background-color: var(--kaki--light);
 }
 
-.button--login, .button--submit {
+.button--login,
+.button--submit {
     background-color: var(--blue);
     color: var(--white);
     padding: 1rem 2rem;
@@ -377,64 +378,90 @@ footer h2 {
     margin: 0;
 }
 
+.contact__container h2 {
+    margin-bottom: 2rem;
+}
+
+.socials {
+    display: flex;
+}
+
 /* overlay */
 
-.wrap{
-    max-width: 350px;
-    margin: auto;
-    padding: 1.25rem;
-    background: var(--white);
-    margin-top: 6.25rem;
-}
-
-.form--orkest{
-    margin-top: 3.125rem;
-}
-
-.input--orkest{
-    width: 100%;
-    padding: .625rem;
-    box-sizing: border-box;
-    margin-bottom: .625rem;
-    border: none;
-    outline: none;
-    border: 1px solid var(--black);
-    font-size: var(--font-size--large);
-    border-radius: 5px;
-}
-
-.wrap h2{
-    margin: 0;
-    padding: 0;
-    font-size: 2em;
-    text-align: center;
-}
-
-.openbtn{
-    background-color: #f1f1f1;
-    border: none;
-    padding: .625rem .9375rem;
-    font-size: var(--font-size--medium);
-    cursor: pointer;
-    float: right;
-}
-
-.closebtn{
+.overlay-form {
     position: absolute;
-    top: 20px;
-    right: 45px;
-    font-size: var(--font-size--XXL);
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: rgba(0, 0, 0, 0.838);
+    z-index: -1;
+    opacity: 0;
+    padding: 5rem 6.25rem;
+    overflow: hidden;
+    transition: top 500ms ease-in-out,
+        opacity 500ms ease-in-out,
+        height 0ms ease-in-out 500ms;
+}
+
+.overlay-form .close-btn {
+    position: absolute;
+    top: 1.25rem;
+    right: 2.5rem;
+    color: #fff;
+    font-size: var(--font-size--h1);
     cursor: pointer;
+}
+
+.overlay-form h1 {
+    font-size: var(--font-size--h1);
     color: var(--white);
 }
 
-.overlay{
-    height: 100%;
+.overlay-form p {
+    color: #eee;
+    margin: -15px 0px 30px;
+}
+
+.overlay-form .form-element {
+    margin: 1.25rem 0px;
+}
+
+.overlay-form label {
+    display: block;
+    font-size: var(--font-size--large);
+    color: var(--white);
+    margin-bottom: 0.5rem;
+}
+
+.overlay-form input {
     width: 100%;
-    display: none;
-    position: fixed;
-    z-index: 1;
+    padding: 0.5rem;
+    font-size: var(--font-size--large);
+    border: 2px solid var(--white);
+    background: transparent;
+    outline: none;
+    border-radius: 10px;
+    color: var(--white);
+}
+
+body.activateForm .overlay-form {
+    z-index: 2;
+    opacity: 1;
     top: 0;
-    left: 0;
-    background-color: rgba(0,0,0,0.7);
+    height: 100vh;
+    transition: top 500ms ease-in-out,
+        opacity 500ms ease-in-out,
+        height 0ms ease-in-out 0ms;
+    
+}
+
+.input--password{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hidden--icon{
+    width: 2rem;
 }
