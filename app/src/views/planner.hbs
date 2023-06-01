@@ -4,18 +4,15 @@
     <button id="save" onclick="downloadPDF()" class="no-print">
       Save as PDF
     </button>
-    <button onclick="addObject('blue', 90)">add object</button>
-    <button onclick="addObject('ship')">add ship</button>
-    <button onclick="addObject('orkeststoel')">add orkeststoel</button>
-
     <ul>
       {{#each inventoryData as |item|}}
         {{#if item.name}}
           <li>
-            <button onclick="addObject('{{item.name}}', {{item.count}})">{{item.name}}</button>
+            <button onclick="addObject('{{item.name}}', '{{item.width}}', '{{item.length}}', true)">{{item.name}}</button>
+            <label for="{{item.name}}">rotate</label>
+            <input type="checkbox" name="{{item.name}}" id="{{item.name}}">
           </li>
         {{/if}}
-        
       {{/each}}
     </ul>
     <script>window.inventory = {{{jsData}}}</script>
