@@ -377,6 +377,14 @@ footer h2 {
     margin: 0;
 }
 
+.contact__container h2{
+    margin-bottom: 2rem;
+}
+
+.socials{
+    display: flex;
+}
+
 /* overlay */
 
 .wrap{
