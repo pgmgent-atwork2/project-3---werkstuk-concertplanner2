@@ -1,8 +1,8 @@
-import Datasource from '../../lib/DataSource.js'
+import DataSource from '../../lib/DataSource.js'
 
 export const getItems = async (req, res, next) => {
   try {
-    const inventoryRepository = Datasource.getRepository('inventory');
+    const inventoryRepository = DataSource.getRepository('inventory');
     const inventory = await inventoryRepository.find();
     res.status(200).json(inventory);
   } catch (error) {
@@ -14,7 +14,7 @@ export const getItems = async (req, res, next) => {
 
 export const getSpecificItem = async (req, res, next) => {
   try {
-    const inventoryRepository = Datasource.getRepository('inventory');
+    const inventoryRepository = DataSource.getRepository('inventory');
 
     const {
       id
@@ -34,7 +34,7 @@ export const getSpecificItem = async (req, res, next) => {
 
 export const postItem = async (req, res, next) => {
   try {
-    const inventoryRepository = Datasource.getRepository('inventory');
+    const inventoryRepository = DataSource.getRepository('inventory');
     const inventory = await inventoryRepository.findOneBy({
       name: req.body.name,
       count: req.body.count,
@@ -59,7 +59,7 @@ export const postItem = async (req, res, next) => {
 
 export const updateItem = async (req, res, next) => {
   try {
-    const inventoryRepository = Datasource.getRepository('inventory');
+    const inventoryRepository = DataSource.getRepository('inventory');
     const inventory = await inventoryRepository.findOneBy({
       id: req.params.id
     });
@@ -84,7 +84,7 @@ export const deleteItem = async (req, res, next) => {
       id
     } = req.params;
 
-    const inventoryRepository = Datasource.getRepository('inventory');
+    const inventoryRepository = DataSource.getRepository('inventory');
     const inventory = await inventoryRepository.findOneBy({
       id
     });

@@ -32,9 +32,7 @@ export const updateItem = async (req, res, next) => {
     const inventoryRepository = DataSource.getRepository("inventory");
     const inventory = await inventoryRepository.findOneBy({
       id: req.body.changeName,
-
     });
-    console.log(inventory)
     const newItem = {
       ...inventory,
       ...req.body
@@ -45,6 +43,26 @@ export const updateItem = async (req, res, next) => {
 
     // give a response to the client
     res.redirect("/inventory")
+  } catch (error) {
+    error.message
+  }
+}
+
+export const deleteItem = async (req, res, next) => {
+  try {
+    const id = req.body.delete;
+    const inventoryRepository = DataSource.getRepository('inventory');
+    const inventory = await inventoryRepository.findOneBy({
+      id
+    });
+
+    console.log(id);
+    if (inventory) {
+      await inventoryRepository.delete(inventory);
+    }
+
+    res.redirect("/inventory")
+
   } catch (error) {
     error.message
   }
