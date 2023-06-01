@@ -5,10 +5,8 @@ let cHeight = cWidth;
 let scale = cWidth / 34.50867052;
 
 // variables
-// let blue = 90;
-let spriteCount = {};
 const inventoryData = window.inventory;
-console.log(inventoryData);
+console.table(inventoryData);
 
 // Create the Pixi application and create a canvas to work with
 let app = new PIXI.Application({
@@ -23,18 +21,18 @@ bg.width = app.screen.width;
 bg.height = app.screen.height;
 
 // create the draggable objects
-let obj1 = PIXI.Sprite.from('./images/blue.png');
+// let obj1 = PIXI.Sprite.from('./images/blue.png');
 
-let obj2 = PIXI.Sprite.from('./images/blue.png');
+// let obj2 = PIXI.Sprite.from('./images/blue.png');
 
-let obj3 = PIXI.Sprite.from('./images/blue.png');
+// let obj3 = PIXI.Sprite.from('./images/blue.png');
 
-let obj4 = PIXI.Sprite.from('./images/blue.png');
+// let obj4 = PIXI.Sprite.from('./images/blue.png');
 
-let obj5 = PIXI.Sprite.from('./images/blue.png');
+// let obj5 = PIXI.Sprite.from('./images/blue.png');
 
 // create variable for dragged object
-let objects = [obj1, obj2, obj3, obj4, obj5];
+let objects = [];
 console.log(objects);
 let draggingObj = null;
 app.stage.interactive = true;
@@ -43,24 +41,44 @@ app.stage.on('pointerup', onDragEnd);
 app.stage.on('pointerupoutside', onDragEnd);
 let moved = false;
 
-function addObject(type, amount) {
+function addObject(type) {
   let obj;
-  if (type === 'blue' && amount > 0) {
-    amount--;
-    obj = PIXI.Sprite.from('./images/blue.png');
-    obj.name = 'blue';
-    console.log(amount);
-  } else if (type === 'ship') {
-    obj = PIXI.Sprite.from('./images/sample.png');
-  } else if (type === 'orkeststoel') {
-    obj = PIXI.Sprite.from('./images/orkeststoel.jpg');
-  }
+  let objIndex = inventoryData.findIndex((item) => item.name === type);
+  if (inventoryData[objIndex].count <= 0) {
+    return alert('no more objects of this type');
+  } else {
+    inventoryData[objIndex].count--;
+    obj = new PIXI.Sprite(PIXI.Texture.WHITE);
+    obj.tint = 0x0000ff;
+    obj.name = type;
+    console.log(inventoryData[objIndex].count);
 
-  objects.push(obj);
-  console.log(objects);
-  // make the change appear on the screen
-  makeObjectsDraggable(obj);
-  app.stage.addChild(obj);
+    if (type === 'pupiters') {
+      obj.tint = 0x0000ff;
+    } else if (type === 'muziekantenstoelen') {
+      obj.tint = 0xff0000;
+    } else if (type === 'orkeststoel') {
+      obj.tint = 0x00ff00;
+    } else if (type === 'pianostoelen') {
+      obj.tint = 0xffff00;
+    } else if (type === 'podiumelement S') {
+      obj.tint = 0xff00ff;
+    } else if (type === 'podiumelement M') {
+      obj.tint = 0x00ffff;
+    } else if (type === 'podiumelement L') {
+      obj.tint = 0xff8000;
+    } else if (type === 'podiumelement XL') {
+      obj.tint = 0x000000;
+    } else if (type === 'piano steinway D') {
+      obj.tint = 0x808080;
+    }
+
+    objects.push(obj);
+    console.log(objects);
+    // make the change appear on the screen
+    makeObjectsDraggable(obj);
+    app.stage.addChild(obj);
+  }
 }
 
 function makeObjectsDraggable(obj) {
@@ -90,10 +108,11 @@ function onDragEnd() {
   if (draggingObj) {
     if (moved === false) {
       if (window.confirm('do you want to delete this object?')) {
-        if (draggingObj.name === 'blue') {
-          blue++;
-          console.log(blue);
-        }
+        let objIndex = inventoryData.findIndex(
+          (item) => item.name === draggingObj.name
+        );
+        inventoryData[objIndex].count++;
+        console.log(inventoryData[objIndex].count);
         objects.splice(objects.indexOf(draggingObj), 1);
         draggingObj.parent.removeChild(draggingObj).destroy();
       }
@@ -141,13 +160,14 @@ function onDragMove(ev) {
       }
     }
     if (draggingObj.x > app.screen.width - 10) {
-      if (draggingObj.name === 'blue') {
-        blue++;
-        console.log(blue);
-      }
+      let objIndex = inventoryData.findIndex(
+        (item) => item.name === draggingObj.name
+      );
+      inventoryData[objIndex].count++;
+      console.log(inventoryData[objIndex].count);
       draggingObj.dragging = false;
       objects.splice(objects.indexOf(draggingObj), 1);
-      draggingObj.parent.removeChild(this).destroy();
+      draggingObj.parent.removeChild(draggingObj).destroy();
       draggingObj = null;
     } else if (draggingObj.x <= draggingObj.width / 2) {
       draggingObj.x = draggingObj.width / 2;
