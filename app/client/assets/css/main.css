@@ -220,7 +220,8 @@ nav {
     background-color: var(--kaki--light);
 }
 
-.button--login, .button--submit {
+.button--login,
+.button--submit {
     background-color: var(--blue);
     color: var(--white);
     padding: 1rem 2rem;
@@ -292,7 +293,8 @@ nav {
 }
 
 .searchbar {
-    padding: 0.5rem 0;
+    padding: 0.5rem;
+    border-radius: 2rem;
 }
 
 .inventory__search {
@@ -302,7 +304,6 @@ nav {
 .inventory {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     margin: 2rem 4rem;
     gap: 1rem;
 }
@@ -317,7 +318,7 @@ nav {
     border-radius: 20px;
     padding-right: 1rem;
     height: 5rem;
-    width: 22%;
+    width: 24%;
 }
 
 .item__image {
@@ -379,7 +380,7 @@ footer h2 {
 
 /* overlay */
 
-.wrap{
+.wrap {
     max-width: 350px;
     margin: auto;
     padding: 1.25rem;
@@ -387,11 +388,11 @@ footer h2 {
     margin-top: 6.25rem;
 }
 
-.form--orkest{
+.form--orkest {
     margin-top: 3.125rem;
 }
 
-.input--orkest{
+.input--orkest {
     width: 100%;
     padding: .625rem;
     box-sizing: border-box;
@@ -403,14 +404,14 @@ footer h2 {
     border-radius: 5px;
 }
 
-.wrap h2{
+.wrap h2 {
     margin: 0;
     padding: 0;
     font-size: 2em;
     text-align: center;
 }
 
-.openbtn{
+.openbtn {
     background-color: #f1f1f1;
     border: none;
     padding: .625rem .9375rem;
@@ -419,7 +420,7 @@ footer h2 {
     float: right;
 }
 
-.closebtn{
+.closebtn {
     position: absolute;
     top: 20px;
     right: 45px;
@@ -428,7 +429,7 @@ footer h2 {
     color: var(--white);
 }
 
-.overlay{
+.overlay {
     height: 100%;
     width: 100%;
     display: none;
@@ -436,5 +437,10 @@ footer h2 {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: rgba(0,0,0,0.7);
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.change input {
+    background-color: transparent;
+    border: none;
 }
