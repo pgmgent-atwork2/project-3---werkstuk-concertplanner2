@@ -47,3 +47,23 @@ export const updateItem = async (req, res, next) => {
     error.message
   }
 }
+
+export const deleteItem = async (req, res, next) => {
+  try {
+    const id = req.body.delete;
+    const inventoryRepository = DataSource.getRepository('inventory');
+    const inventory = await inventoryRepository.findOneBy({
+      id
+    });
+
+    console.log(id);
+    if (inventory) {
+      await inventoryRepository.delete(inventory);
+    }
+
+    res.redirect("/inventory")
+
+  } catch (error) {
+    error.message
+  }
+}
