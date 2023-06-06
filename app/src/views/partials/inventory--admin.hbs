@@ -1,0 +1,34 @@
+<section class='inventory'>
+  {{#each inventoryData}}
+    <div class='inventory_item'>
+      <img class='item__image' src='images/orkeststoel.jpg' alt='' />
+
+      <form action='/changeItem/{{id}}' method='post' class='change'>
+        <input type='hidden' name='change' value='{{id}}' />
+        <input
+          class='inventory__input'
+          type='text'
+          name='name'
+          value='{{name}}'
+        />
+        <input type='hidden' name='change' value='{{id}}' />
+        <input
+          class='inventory__input'
+          type='text'
+          name='count'
+          value='{{count}}'
+        />
+        <button class="button--edit" type='submit'>
+          edit
+        </button>
+      </form>
+
+      <form action='/deleteItem/{{id}}' method='post'>
+        <input type='hidden' name='delete' value='{{id}}' />
+        <button class="button--delete" type='submit'>
+          delete
+        </button>
+      </form>
+      <span class='infobox--size'>{{width}}m x {{length}}m</span>
+    </div>{{/each}}
+</section>
