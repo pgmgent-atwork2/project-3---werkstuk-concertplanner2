@@ -45,12 +45,11 @@ export const addOrkestUser = async (req, res) => {
 
   // render the register page
   res.render("admin", {
-    layout: "authentication",
+    layout: "main",
     inputs,
     formErrors,
     roles,
-    // activateForm: "activateForm"
-    activateEvent: "activateEvent"
+    activateForm: "activateForm"
   });
 };
 
@@ -74,7 +73,7 @@ export const addEvent = async (req, res) => {
 
   // render the register page
   res.render("admin", {
-    layout: "authentication",
+    layout: "main",
     inputs,
     formErrors,
     roles,
