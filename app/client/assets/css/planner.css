@@ -21,13 +21,34 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 1rem 2rem;
-
+  padding: 1rem 1rem;
   border-radius: 10px;
-
   border: none;
 }
 
 .planner-list__title {
   width: 9.5rem;
+}
+
+.canvas {
+  position: relative;
+  height: fit-content;
+}
+
+.canvas::after {
+  content: "🗑️";
+  font-size: 1.5rem;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: -1rem;
+  height: 100%;
+  width: 2rem;
+  background-color: hsla(0, 100%, 50%, 0.497);
+  z-index: 1;
+}
+
+.rotate-check {
+  width: fit-content;
+  margin-left: auto;
 }

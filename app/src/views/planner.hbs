@@ -5,16 +5,16 @@
       Save as PDF
     </button>
     <div class="box">
-    <div id="canvas"></div>
+    <div class="canvas" id="canvas"></div>
      <ul class="sidepanel planner-list">
       {{#each inventoryData as |item|}}
         {{#if item.name}}
           <li>
             <label for="{{item.name}}" class="planner-list__title">{{item.name}}</label>
             <div>
-              <button onclick="addObject('{{item.name}}', '{{item.width}}', '{{item.length}}', true)" name="{{item.name}}">+</button>
-              <div>
-                <label for="{{item.name}}">rotate</label>
+              <button onclick="addObject('{{item.name}}', '{{item.width}}', '{{item.length}}', true)" name="{{item.name}}">toevoegen</button>
+              <div class="rotate-check">
+                <label for="{{item.name}}">⟳</label>
                 <input type="checkbox" name="{{item.name}}" id="{{item.name}}">
               </div>
             </div>
