@@ -184,6 +184,45 @@ button:hover {
     width: 9.5rem;
 }
 
+.canvas {
+  position: relative;
+  height: fit-content;
+}
+
+.canvas::after {
+  content: "🗑️";
+  font-size: 1.5rem;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: -1rem;
+  height: 100%;
+  width: 2rem;
+  background-color: hsla(0, 100%, 50%, 0.497);
+  z-index: 1;
+}
+
+.rotate-check {
+  width: fit-content;
+  margin-left: auto;
+}
+
+@media (max-width: 80.3125rem) {
+  .planner-list li {
+    flex-direction: column;
+    // align-items: flex-start;
+  }
+  .planner-add {
+    display: flex;
+    gap: 1rem;
+  }
+}
+
+.planner-add .button--add {
+  font-size: 1rem;
+  border-radius: 11px;
+}
+
 /* main container user */
 
 .main__container--flex {
