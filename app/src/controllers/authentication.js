@@ -144,22 +144,29 @@ export const postRegister = async (req, res, next) => {
         email: req.body.email,
         password: hashedPassword,
         role: 2,
+        meta:{
+          orkestName: req.body.orkestName,
+        },
+        data:{
+          datum: req.body.date,
+
+        }
       });
 
-      const userMeta = await metaRepository.create({
-        orkestName: req.body.orkestName,
-      })
+      // const userMeta = await metaRepository.create({
+      //   orkestName: req.body.orkestName,
+      // })
 
-      const date = await dateRepository.create({
-        datum: req.body.date,
-      })
+      // const date = await dateRepository.create({
+      //   datum: req.body.date,
+      // })
 
       console.log(req.body.date);
 
       // save the user
       await userRepository.save(user);
-      await metaRepository.save(userMeta);
-      await dateRepository.save(date);
+      // await metaRepository.save(userMeta);
+      // await dateRepository.save(date);
 
       res.redirect("/");
     }
