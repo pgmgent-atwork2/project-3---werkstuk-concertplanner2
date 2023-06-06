@@ -49,8 +49,7 @@ export const addOrkestUser = async (req, res) => {
     inputs,
     formErrors,
     roles,
-    // activateForm: "activateForm"
-    activateEvent: "activateEvent"
+    activateForm: "activateForm"
   });
 };
 
