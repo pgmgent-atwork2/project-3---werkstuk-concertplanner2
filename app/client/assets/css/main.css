@@ -557,12 +557,12 @@ footer h2 {
 }
 
 .activateForm .btn--clear,
-.activateForm .btn--register {
+.activateForm .btn--register, .eventForm .btn--clear, .eventForm .btn--register {
     width: 20%;
     margin-top: 1rem;
 }
 
-.activateForm .btn--clear{
+.activateForm .btn--clear, .eventForm .btn--clear {
     background-color: var(--red);
 }
 

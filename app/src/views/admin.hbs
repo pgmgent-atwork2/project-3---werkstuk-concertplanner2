@@ -12,9 +12,8 @@
     <h1>Registreer een nieuw orkest</h1>
     <form method="post" action="/addOrkestUser">
       {{#each inputs}}
-        {{>form-input this}}
+      {{>form-input this}}
       {{/each}}
-      <p>z</p>
       <div class="register__buttons">
         <input type="submit" class="btn btn--register" value="Register">
         <input type="reset" class="btn btn--clear" value="Clear">
@@ -23,12 +22,14 @@
   </div>
 </div>
 
-<div class=" {{ activateForm }}" id="toggleEvent">
+<div class=" {{ eventForm }}" id="toggleEvent">
   <div class="overlay-form">
     <div class="close-btn" onclick="closeFormEvent()">&times;</div>
     <h1>Registreer een nieuw event</h1>
     <form method="post" action="/addEvent">
-  <p>hello</p>
+      {{#each inputs}}
+      {{>form-input this}}
+      {{/each}}
       <div class="register__buttons">
         <input type="submit" class="btn btn--register" value="Register">
         <input type="reset" class="btn btn--clear" value="Clear">
@@ -39,22 +40,18 @@
 
 <script>
   function toggleForm() {
-    document.getElementById('toggleView').classList.toggle('activateForm');
-
-
+    document.location.href = "/addOrkestUser";
   };
 
   function closeForm() {
     document.getElementById('toggleView').classList.remove('activateForm');
   }
-
     function toggleFormEvent() {
-    document.getElementById('toggleEvent').classList.toggle('activateForm');
-
+    document.location.href = "/addEvent";
   };
 
   function closeFormEvent() {
-    document.getElementById('toggleEvent').classList.remove('activateForm');
+    document.getElementById('toggleEvent').classList.remove('eventForm');
   }
 </script>
 

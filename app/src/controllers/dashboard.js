@@ -77,7 +77,7 @@ export const addEvent = async (req, res) => {
     inputs,
     formErrors,
     roles,
-    activateForm: "activateForm"
+    eventForm: "eventForm"
   });
 };
 
