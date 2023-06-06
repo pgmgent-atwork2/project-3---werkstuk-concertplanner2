@@ -22,15 +22,15 @@
     --kaki: hsl(33, 41%, 57%);
     --kaki--hover: hsl(33, 42%, 80%);
     --red: hsl(5, 80%, 58%);
-    --yellow:
-        --border_color: hsla(0, 0%, 0%, 0.094);
+    --yellow: hsl(36, 89%, 48%);
+    --border_color: hsla(0, 0%, 0%, 0.094);
     --main_color: hsl(0, 0%, 85%);
     --hover_color--blue: hsl(220, 100%, 39%);
     --hover_color--red: hsl(5, 56%, 51%);
-    --footer-color: hsl(0, 0%, 91%);
-    --footer-reference: hsl(0, 0%, 67%);
+    --grey--light: hsl(0, 0%, 67%);
     --overlay-background: hsla(0, 0%, 0%, 0.838);
     --overlay-text: #eee;
+    --grey--dark: hsl(0, 0%, 32%);
 
     --font-size--h1: 32px;
     --font-size--h2: 24px;
@@ -358,7 +358,7 @@ nav {
 }
 
 .button--edit {
-    background-color: hsl(36, 89%, 48%);
+    background-color: var(--yellow);
     padding: 0.5rem;
     border-radius: 50%;
     border: none;
@@ -413,7 +413,7 @@ footer h2 {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: var(--footer-color);
+    background-color: var(--main_color);
     padding: 3rem 0;
 }
 
@@ -422,7 +422,7 @@ footer h2 {
 }
 
 .footer__reference {
-    background-color: var(--footer-reference);
+    background-color: var(--grey--light);
     text-align: center;
     margin: 0;
 }
@@ -465,6 +465,7 @@ footer h2 {
 .overlay-form h1 {
     font-size: var(--font-size--h1);
     color: var(--white);
+    margin-bottom: 2rem;
 }
 
 .overlay-form p {
@@ -495,13 +496,13 @@ footer h2 {
 }
 
 .activateForm .overlay-form {
-  z-index: 2;
-  opacity: 1;
-  top: 0;
-  height: 100vh;
-  transition: top 500ms ease-in-out,
-    opacity 500ms ease-in-out,
-    height 0ms ease-in-out 0ms;
+    z-index: 2;
+    opacity: 1;
+    top: 0;
+    height: 100vh;
+    transition: top 500ms ease-in-out,
+        opacity 500ms ease-in-out,
+        height 0ms ease-in-out 0ms;
 
 }
 
@@ -511,8 +512,14 @@ footer h2 {
     justify-content: space-between;
 }
 
-.hidden--icon {
-    width: 2rem;
+.activateForm .btn--clear,
+.activateForm .btn--register {
+    width: 20%;
+    margin-top: 1rem;
+}
+
+.activateForm .btn--clear{
+    background-color: var(--red);
 }
 
 /* login */
@@ -563,4 +570,5 @@ footer h2 {
     width: 80%;
     padding: 0.5rem;
     border: none;
+    background-color: var(--grey--dark);
 }

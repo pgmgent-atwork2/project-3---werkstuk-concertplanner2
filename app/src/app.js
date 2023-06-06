@@ -86,9 +86,10 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(SOURCE_PATH, 'views'));
 
 //-----------------ROUTES --------------//
-app.get('/', jwtAuth,  home);
+app.get('/', jwtAuth, home);
 app.get('/addOrkestUser', jwtAuth, addOrkestUser);
 app.post('/addOrkestUser', registerAuthentication, postRegister, addOrkestUser);
+app.get('/addEvent', jwtAuth, addOrkestUser)
 app.get('/login', login);
 app.post('/login', loginAuthentication, postLogin, login);
 app.post('/logout', logout);
