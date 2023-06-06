@@ -45,7 +45,7 @@ export const addOrkestUser = async (req, res) => {
 
   // render the register page
   res.render("admin", {
-    layout: "authentication",
+    layout: "main",
     inputs,
     formErrors,
     roles,
@@ -73,7 +73,7 @@ export const addEvent = async (req, res) => {
 
   // render the register page
   res.render("admin", {
-    layout: "authentication",
+    layout: "main",
     inputs,
     formErrors,
     roles,
