@@ -11,6 +11,7 @@ import {
 // import handlebarsHelpers from "./lib/handlebarsHelpers.js";
 
 import {
+  addOrkestUser,
   home,
   inventory,
   planner
@@ -48,7 +49,6 @@ import {
   logout,
   postLogin,
   postRegister,
-  register,
 } from './controllers/authentication.js';
 import {
   deleteItem,
@@ -86,9 +86,10 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(SOURCE_PATH, 'views'));
 
 //-----------------ROUTES --------------//
-app.get('/', jwtAuth,  registerAuthentication, postRegister, register, home);
+app.get('/', jwtAuth,  home);
+app.get('/addOrkestUser', jwtAuth, addOrkestUser);
+app.post('/addOrkestUser', registerAuthentication, postRegister, addOrkestUser);
 app.get('/login', login);
-app.post('/register', registerAuthentication, postRegister, register);
 app.post('/login', loginAuthentication, postLogin, login);
 app.post('/logout', logout);
 app.get('/inventory', jwtAuth, inventory);

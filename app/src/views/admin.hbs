@@ -6,24 +6,32 @@
 
 </main>
 
-<div class="overlay-form">
-  <div class="close-btn" onclick="toggleForm()">&times;</div>
-  <h1>Registreer een nieuw orkest</h1>
-  <form method="post" action="/register">
-    {{#each inputs}}
-    {{>form-input this}}
-    {{/each}}
-    <div class="footer">
-      <input type="reset" class="btn btn-tertiary" value="Clear">
-      <input type="submit" class="btn btn-primary" value="Register">
-    </div>
-  </form>
+<div class="toggleView {{ activateForm }}">
+  <div class="overlay-form">
+    <div class="close-btn" onclick="closeForm()">&times;</div>
+    <h1>Registreer een nieuw orkest</h1>
+    <form method="post" action="/addOrkestUser">
+      {{#each inputs}}
+      {{>form-input this}}
+      {{/each}}
+      <div class="footer">
+        <input type="reset" class="btn btn-tertiary" value="Clear">
+        <input type="submit" class="btn btn-primary" value="Register">
+      </div>
+    </form>
+  </div>
 </div>
-
 <script>
   function toggleForm() {
-    document.body.classList.toggle('activateForm');
+    document.querySelector('.toggleView').classList.toggle('activateForm');
+    setTimeout(function() {
+      document.location.href = "/addOrkestUser";
+    }, 1000);
   };
+
+  function closeForm() {
+    document.querySelector('.toggleView').classList.remove('activateForm');
+  }
 </script>
 
 {{> footer}}
