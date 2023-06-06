@@ -27,6 +27,11 @@
     <div class="close-btn" onclick="closeFormEvent()">&times;</div>
     <h1>Registreer een nieuw event</h1>
     <form method="post" action="/addEvent">
+    <select name="orkests" id="orkestSelect">
+        {{#each meta}}
+        <option value="{{id}}">{{orkestName}}</option>
+        {{/each}}
+    </select>
       {{#each inputs}}
       {{>form-input this}}
       {{/each}}

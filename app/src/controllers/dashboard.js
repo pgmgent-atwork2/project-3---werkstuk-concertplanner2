@@ -9,7 +9,9 @@ export const home = async (req, res) => {
   } else if (userRole === 'user') {
     res.render('user');
   }
-}; // get the user repository
+}; 
+
+
 
 export const addOrkestUser = async (req, res) => {
   // errors
@@ -57,6 +59,10 @@ export const addEvent = async (req, res) => {
   // errors
   const formErrors = req.formErrors;
 
+  const metaRepository = await DataSource.getRepository("UserMeta");
+
+  const meta = metaRepository.find()
+
   // input fields
   const inputs = [
     {
@@ -65,6 +71,7 @@ export const addEvent = async (req, res) => {
       type: "date",
       value: req.body?.date ? req.body.date : "",
       error: req.formErrorFields?.date ? req.formErrorFields.date : null,
+
     }
   ];
 
@@ -77,7 +84,8 @@ export const addEvent = async (req, res) => {
     inputs,
     formErrors,
     roles,
-    eventForm: "eventForm"
+    eventForm: "eventForm",
+    meta
   });
 };
 
