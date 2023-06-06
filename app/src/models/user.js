@@ -32,7 +32,7 @@ export default new EntitySchema({
       cascade: true,
       inverseSide: "user",
     },
-    data: {
+    date: {
       target: "Date",
       type: "one-to-many",
       cascade: true,

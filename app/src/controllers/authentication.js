@@ -140,28 +140,25 @@ export const postRegister = async (req, res, next) => {
       const hashedPassword = bcrypt.hashSync(req.body.password, 10);
 
       // create a new user
-      const user = await userRepository.create({
+      const user = userRepository.create({
         email: req.body.email,
         password: hashedPassword,
         role: 2,
         meta:{
           orkestName: req.body.orkestName,
         },
-        data:{
+        date: [{
           datum: req.body.date,
-
-        }
+        }]
       });
 
       // const userMeta = await metaRepository.create({
       //   orkestName: req.body.orkestName,
       // })
 
-      // const date = await dateRepository.create({
-      //   datum: req.body.date,
-      // })
+      
 
-      console.log(req.body.date);
+      console.log(user);
 
       // save the user
       await userRepository.save(user);
