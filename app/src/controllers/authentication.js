@@ -147,25 +147,15 @@ export const postRegister = async (req, res, next) => {
         meta:{
           orkestName: req.body.orkestName,
         },
-        date: [{
-          datum: req.body.date,
-        }]
       });
 
-      // const userMeta = await metaRepository.create({
-      //   orkestName: req.body.orkestName,
-      // })
-
-      
 
       console.log(user);
 
       // save the user
       await userRepository.save(user);
-      // await metaRepository.save(userMeta);
-      // await dateRepository.save(date);
 
-      res.redirect("/");
+      res.redirect("/addOrkestUser");
     }
   } catch (e) {
     next(e.message);
