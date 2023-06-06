@@ -1,52 +1,20 @@
-import { validationResult } from "express-validator";
+import {
+  validationResult
+} from "express-validator";
 import jwt from "jsonwebtoken";
 import DataSource from "../lib/DataSource.js";
 import bcrypt from "bcrypt";
 
 
 
-export const register = async (req, res) => {
-  // errors
-  const formErrors = req.formErrors;
-
-  // input fields
-  const inputs = [{
-      name: "email",
-      label: "E-mail",
-      type: "text",
-      value: req.body ?.email ? req.body.email : "",
-      error: req.formErrorFields ?.email ? req.formErrorFields.email : null,
-    },
-    {
-      name: "password",
-      label: "Password",
-      type: "password",
-      password: req.body ?.password ? req.body.password : "",
-      error: req.formErrorFields ?.password ?
-        req.formErrorFields.password :
-        null,
-    }
-  ];
-
-  const roleRepository = await DataSource.getRepository("Role");
-  const roles = await roleRepository.find();
-
-
-  // render the register page
-  res.render("register", {
-    layout: "authentication",
-    inputs,
-    formErrors,
-    roles
-  });
-};
-
 export const login = async (req, res) => {
   // errors
   const formErrors = req.formErrors;
 
   // input fields
-  const inputs = [{
+  const inputs = [
+
+    {
       name: "email",
       label: "E-mail",
       type: "text",
@@ -93,6 +61,8 @@ export const postRegister = async (req, res, next) => {
       const userRepository = await DataSource.getRepository("User");
       const roleRepository = await DataSource.getRepository("Role");
       const metaRepository = await DataSource.getRepository("UserMeta");
+      const dateRepository = await DataSource.getRepository("Date");
+
 
       const role = await roleRepository.findOne({
         where: {
@@ -126,13 +96,24 @@ export const postRegister = async (req, res, next) => {
       const user = await userRepository.create({
         email: req.body.email,
         password: hashedPassword,
-        role
+        role: 2,
       });
+
+      const userMeta = await metaRepository.create({
+        orkestName: req.body.orkestName,
+      })
+
+      const date = await dateRepository.create({
+        datum: req.body.date,
+      })
+
 
       // save the user
       await userRepository.save(user);
+      await metaRepository.save(userMeta);
+      await dateRepository.save(date);
 
-      res.redirect("/login");
+      res.redirect("/");
     }
   } catch (e) {
     next(e.message);
@@ -168,6 +149,7 @@ export const postLogin = async (req, res, next) => {
           email: lwEmail,
         },
       });
+
 
       // authentication validation
       if (!user) {
