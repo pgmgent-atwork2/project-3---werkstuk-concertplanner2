@@ -37,12 +37,6 @@ export const addOrkestUser = async (req, res) => {
       error: req.formErrorFields?.password ?
         req.formErrorFields.password :
         null,
-    }, {
-      name: "date",
-      label: "datum van optreden",
-      type: "date",
-      value: req.body?.date ? req.body.date : "",
-      error: req.formErrorFields?.date ? req.formErrorFields.date : null,
     }
   ];
 
