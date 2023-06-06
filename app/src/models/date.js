@@ -5,8 +5,8 @@ const {
 } = typeorm;
 
 export default new EntitySchema({
-  name: 'Date',
-  tableName: 'Date',
+  name: 'events',
+  tableName: 'Events',
   columns: {
     id: {
       primary: true,
@@ -20,7 +20,7 @@ export default new EntitySchema({
   relations: {
     user: {
       target: "User",
-      type: "many-to-one",
+      type: "one-to-one",
       joinColumn: {
         name: "user_id",
       },
