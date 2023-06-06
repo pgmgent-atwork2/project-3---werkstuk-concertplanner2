@@ -11,6 +11,7 @@ import {
 // import handlebarsHelpers from "./lib/handlebarsHelpers.js";
 
 import {
+  addEvent,
   addOrkestUser,
   home,
   inventory,
@@ -89,7 +90,7 @@ app.set('views', path.join(SOURCE_PATH, 'views'));
 app.get('/', jwtAuth, home);
 app.get('/addOrkestUser', jwtAuth, addOrkestUser);
 app.post('/addOrkestUser', registerAuthentication, postRegister, addOrkestUser);
-app.get('/addEvent', jwtAuth, addOrkestUser)
+app.get('/addEvent', jwtAuth, addEvent)
 app.get('/login', login);
 app.post('/login', loginAuthentication, postLogin, login);
 app.post('/logout', logout);

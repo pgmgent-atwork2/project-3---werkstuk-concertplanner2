@@ -5,55 +5,6 @@ import bcrypt from "bcrypt";
 
 
 
-export const register = async (req, res) => {
-  // errors
-  const formErrors = req.formErrors;
-
-  // input fields
-  const inputs = [
-    {
-      name: "orkestName",
-      label: "orkest Name",
-      type: "text",
-      value: req.body ?.orkestName ? req.body.orkestName : "",
-      error: req.formErrorFields ?.orkestName ? req.formErrorFields.orkestName : null,
-    }, {
-      name: "email",
-      label: "E-mail",
-      type: "text",
-      value: req.body ?.email ? req.body.email : "",
-      error: req.formErrorFields ?.email ? req.formErrorFields.email : null,
-    },
-    {
-      name: "password",
-      label: "Password",
-      type: "password",
-      password: req.body ?.password ? req.body.password : "",
-      error: req.formErrorFields ?.password ?
-        req.formErrorFields.password :
-        null,
-    }, {
-      name: "date",
-      label: "datum van optreden",
-      type: "date",
-      value: req.body ?.date ? req.body.date : "",
-      error: req.formErrorFields ?.date ? req.formErrorFields.date : null,
-    }
-  ];
-
-  const roleRepository = await DataSource.getRepository("Role");
-  const roles = await roleRepository.find();
-
-
-  // render the register page
-  res.render("admin", {
-    layout: "authentication",
-    inputs,
-    formErrors,
-    roles
-  });
-};
-
 export const login = async (req, res) => {
   // errors
   const formErrors = req.formErrors;
