@@ -91,6 +91,7 @@ app.get('/', jwtAuth, home);
 app.get('/addOrkestUser', jwtAuth, addOrkestUser);
 app.post('/addOrkestUser', registerAuthentication, postRegister, addOrkestUser);
 app.get('/addEvent', jwtAuth, addEvent)
+app.post('/addEvent', jwtAuth, addEvent)
 app.get('/login', login);
 app.post('/login', loginAuthentication, postLogin, login);
 app.post('/logout', logout);

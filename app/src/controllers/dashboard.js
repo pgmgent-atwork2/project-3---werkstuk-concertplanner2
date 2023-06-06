@@ -4,11 +4,15 @@ export const home = async (req, res) => {
 
   const userRole = req.user.role.label;
 
+  const metaRepository =  DataSource.getRepository("UserMeta");
+  const metaData =await metaRepository.find()
+
+ 
   if (userRole === 'admin') {
     res.render('admin');
   } else if (userRole === 'user') {
     res.render('user');
-  }
+  } 
 }; 
 
 
@@ -59,9 +63,8 @@ export const addEvent = async (req, res) => {
   // errors
   const formErrors = req.formErrors;
 
-  const metaRepository = await DataSource.getRepository("UserMeta");
-
-  const meta = metaRepository.find()
+const metaRepository = DataSource.getRepository("UserMeta");
+const metaData = await metaRepository.find()
 
   // input fields
   const inputs = [
@@ -84,8 +87,8 @@ export const addEvent = async (req, res) => {
     inputs,
     formErrors,
     roles,
-    eventForm: "eventForm",
-    meta
+    metaData,
+    eventForm: "eventForm"
   });
 };
 
