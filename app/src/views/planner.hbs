@@ -11,8 +11,8 @@
         {{#if item.name}}
           <li>
             <label for="{{item.name}}" class="planner-list__title">{{item.name}}</label>
-            <div>
-              <button onclick="addObject('{{item.name}}', '{{item.width}}', '{{item.length}}', true)" name="{{item.name}}">toevoegen</button>
+            <div class="planner-add">
+              <button onclick="addObject('{{item.name}}', '{{item.width}}', '{{item.length}}', true)" name="{{item.name}}" class="button--add">toevoegen</button>
               <div class="rotate-check">
                 <label for="{{item.name}}">⟳</label>
                 <input type="checkbox" name="{{item.name}}" id="{{item.name}}">

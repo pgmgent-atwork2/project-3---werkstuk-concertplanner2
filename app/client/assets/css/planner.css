@@ -14,6 +14,7 @@
   margin: 0rem 3rem;
   margin-top: 0;
   gap: 0.5rem;
+  height: fit-content;
 }
 
 .planner-list li {
@@ -21,13 +22,17 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 1rem 1rem;
+  padding: 1rem 2rem;
   border-radius: 10px;
   border: none;
 }
 
 .planner-list__title {
   width: 9.5rem;
+  height: fit-content;
+  margin-bottom: auto;
+  margin-top: .2rem;
+  font-size: 1.2rem;
 }
 
 .canvas {
@@ -51,4 +56,20 @@
 .rotate-check {
   width: fit-content;
   margin-left: auto;
+}
+
+@media (max-width: 80.3125rem) {
+  .planner-list li {
+    flex-direction: column;
+    // align-items: flex-start;
+  }
+  .planner-add {
+    display: flex;
+    gap: 1rem;
+  }
+}
+
+.planner-add .button--add {
+  font-size: 1rem;
+  border-radius: 11px;
 }

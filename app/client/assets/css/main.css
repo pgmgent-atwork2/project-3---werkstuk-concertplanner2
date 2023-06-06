@@ -64,6 +64,10 @@ nav {
   margin: 2rem 3rem;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 .homelogo {
   width: 15rem;
 }
