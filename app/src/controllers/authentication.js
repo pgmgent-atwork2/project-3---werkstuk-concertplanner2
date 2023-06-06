@@ -1,4 +1,6 @@
-import { validationResult } from "express-validator";
+import {
+  validationResult
+} from "express-validator";
 import jwt from "jsonwebtoken";
 import DataSource from "../lib/DataSource.js";
 import bcrypt from "bcrypt";
@@ -10,8 +12,7 @@ export const register = async (req, res) => {
   const formErrors = req.formErrors;
 
   // input fields
-  const inputs = [
-    {
+  const inputs = [{
       name: "orkestName",
       label: "orkest Name",
       type: "text",
@@ -60,7 +61,7 @@ export const login = async (req, res) => {
 
   // input fields
   const inputs = [
-    
+
     {
       name: "email",
       label: "E-mail",
@@ -110,7 +111,7 @@ export const postRegister = async (req, res, next) => {
       const metaRepository = await DataSource.getRepository("UserMeta");
       const dateRepository = await DataSource.getRepository("Date");
 
-      
+
       const role = await roleRepository.findOne({
         where: {
           label: req.body.role,
@@ -154,7 +155,6 @@ export const postRegister = async (req, res, next) => {
         datum: req.body.date,
       })
 
-      console.log(req.body.date);
 
       // save the user
       await userRepository.save(user);
