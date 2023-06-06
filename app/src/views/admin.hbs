@@ -6,7 +6,7 @@
 
 </main>
 
-<div class="toggleView {{ activateForm }}">
+<div class=" {{ activateForm }}" id="toggleView">
   <div class="overlay-form">
     <div class="close-btn" onclick="closeForm()">&times;</div>
     <h1>Registreer een nieuw orkest</h1>
@@ -22,12 +22,12 @@
   </div>
 </div>
 
-<div class="toggleView {{ activateFormEvent }}">
+<div class=" {{ activateForm }}" id="toggleEvent">
   <div class="overlay-form">
     <div class="close-btn" onclick="closeFormEvent()">&times;</div>
     <h1>Registreer een nieuw event</h1>
     <form method="post" action="/addEvent">
-
+  <p>hello</p>
       <div class="register__buttons">
         <input type="submit" class="btn btn--register" value="Register">
         <input type="reset" class="btn btn--clear" value="Clear">
@@ -38,25 +38,21 @@
 
 <script>
   function toggleForm() {
-    document.querySelector('.toggleView').classList.toggle('activateForm');
-    setTimeout(function() {
-      document.location.href = "/addOrkestUser";
-    }, 1000);
+    document.getElementById('toggleView').classList.toggle('activateForm');
+
   };
 
   function closeForm() {
-    document.querySelector('.toggleView').classList.remove('activateForm');
+    document.getElementById('toggleView').classList.remove('activateForm');
   }
 
     function toggleFormEvent() {
-    document.querySelector('.toggleView').classList.toggle('activateFormEvent');
-    setTimeout(function() {
-      document.location.href = "/addEvent";
-    }, 1000);
+    document.getElementById('toggleEvent').classList.toggle('activateForm');
+
   };
 
   function closeFormEvent() {
-    document.querySelector('.toggleView').classList.remove('activateForm');
+    document.getElementById('toggleEvent').classList.remove('activateForm');
   }
 </script>
 
