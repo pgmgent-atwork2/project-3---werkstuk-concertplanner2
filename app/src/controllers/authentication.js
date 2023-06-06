@@ -10,7 +10,14 @@ export const register = async (req, res) => {
   const formErrors = req.formErrors;
 
   // input fields
-  const inputs = [{
+  const inputs = [
+    {
+      name: "orkestName",
+      label: "orkest Name",
+      type: "text",
+      value: req.body ?.orkestName ? req.body.orkestName : "",
+      error: req.formErrorFields ?.orkestName ? req.formErrorFields.orkestName : null,
+    }, {
       name: "email",
       label: "E-mail",
       type: "text",
@@ -25,6 +32,12 @@ export const register = async (req, res) => {
       error: req.formErrorFields ?.password ?
         req.formErrorFields.password :
         null,
+    }, {
+      name: "date",
+      label: "datum van optreden",
+      type: "date",
+      value: req.body ?.date ? req.body.date : "",
+      error: req.formErrorFields ?.date ? req.formErrorFields.date : null,
     }
   ];
 
@@ -33,7 +46,7 @@ export const register = async (req, res) => {
 
 
   // render the register page
-  res.render("register", {
+  res.render("admin", {
     layout: "authentication",
     inputs,
     formErrors,
@@ -46,7 +59,9 @@ export const login = async (req, res) => {
   const formErrors = req.formErrors;
 
   // input fields
-  const inputs = [{
+  const inputs = [
+    
+    {
       name: "email",
       label: "E-mail",
       type: "text",
@@ -93,7 +108,9 @@ export const postRegister = async (req, res, next) => {
       const userRepository = await DataSource.getRepository("User");
       const roleRepository = await DataSource.getRepository("Role");
       const metaRepository = await DataSource.getRepository("UserMeta");
+      const dateRepository = await DataSource.getRepository("Date");
 
+      
       const role = await roleRepository.findOne({
         where: {
           label: req.body.role,
@@ -126,13 +143,25 @@ export const postRegister = async (req, res, next) => {
       const user = await userRepository.create({
         email: req.body.email,
         password: hashedPassword,
-        role
+        role: 2,
       });
+
+      const userMeta = await metaRepository.create({
+        orkestName: req.body.orkestName,
+      })
+
+      const date = await dateRepository.create({
+        datum: req.body.date,
+      })
+
+      console.log(req.body.date);
 
       // save the user
       await userRepository.save(user);
+      await metaRepository.save(userMeta);
+      await dateRepository.save(date);
 
-      res.redirect("/login");
+      res.redirect("/");
     }
   } catch (e) {
     next(e.message);
