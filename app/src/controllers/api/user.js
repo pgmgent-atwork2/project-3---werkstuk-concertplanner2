@@ -4,7 +4,7 @@ export const getUsers = async (req, res, next) => {
   try {
     const userRepository = Datasource.getRepository('User');
     const users = await userRepository.find({
-      relations: ["role", "meta", "data"]
+      relations: ["role", "meta", "events"]
     });
     res.status(200).json(users);
   } catch (error) {
