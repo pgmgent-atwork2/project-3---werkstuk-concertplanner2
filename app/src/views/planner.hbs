@@ -13,13 +13,22 @@
       <label for="snap">snap</label>
       <input type="checkbox" name="snap" id="snap" checked>
     </div>
+  
+    
     
       {{#each inventoryData as |item|}}
         {{#if item.name}}
           <li>
             <label for="{{item.name}}" class="planner-list__title">{{item.name}}</label>
+            {{#if item.chairs}}
+              <select name="chair-types" id="chair-types">
+                {{#each item.chairs as |chair|}}
+                  <option value="{{chair.color}}">{{chair.name}}</option>  
+                {{/each}}
+              </select>
+            {{/if}}
             <div class="planner-add">
-              <button onclick="addObject('{{item.name}}', '{{item.width}}', '{{item.length}}', true)" name="{{item.name}}" class="button--add">toevoegen</button>
+              <button onclick="addObject('{{item.name}}', '{{item.width}}', '{{item.length}}', true, `${document.getElementById('chair-types').value}`)" name="{{item.name}}" class="button--add">toevoegen</button>
               <div class="rotate-check">
                 <label for="{{item.name}}">⟳</label>
                 <input type="checkbox" name="{{item.name}}" id="{{item.name}}">

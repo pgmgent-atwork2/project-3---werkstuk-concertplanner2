@@ -45,7 +45,7 @@ app.stage.on('pointerupoutside', onDragEnd);
 
 let moved = false;
 
-function addObject(type, width, height, rotate) {
+function addObject(type, width, height, rotate, color) {
   console.log(width, height);
   let obj;
   let objIndex = inventoryData.findIndex((item) => item.name === type);
@@ -62,7 +62,7 @@ function addObject(type, width, height, rotate) {
       obj.tint = 0x0000ff;
       obj.zIndex = 1;
     } else if (type === 'muziekantenstoelen') {
-      obj.tint = 0xff0000;
+      obj.tint = color;
       obj.zIndex = 1;
     } else if (type === 'pianostoelen') {
       obj.tint = 0xffff00;

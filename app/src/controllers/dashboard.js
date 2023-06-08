@@ -64,8 +64,8 @@ export const addEvent = async (req, res) => {
   // errors
   const formErrors = req.formErrors;
 
-const metaRepository = DataSource.getRepository("UserMeta");
-const metaData = await metaRepository.find({relations: ["user"]})
+  const metaRepository = DataSource.getRepository('UserMeta');
+  const metaData = await metaRepository.find({ relations: ['user'] });
 
   // input fields
   const inputs = [
@@ -80,7 +80,6 @@ const metaData = await metaRepository.find({relations: ["user"]})
 
   const roleRepository = await DataSource.getRepository('Role');
   const roles = await roleRepository.find();
-
 
   // render the register page
   res.render('admin', {
@@ -98,7 +97,6 @@ export const inventory = async (req, res) => {
   const inventoryData = await inventoryRepo.find();
 
   const userRole = req.user.role.label;
-
   res.render(`${userRole}/inventory`, {
     inventoryData,
     jsData: JSON.stringify(inventoryData),
@@ -107,7 +105,7 @@ export const inventory = async (req, res) => {
 
 export const planner = async (req, res) => {
   const inventoryRepo = DataSource.getRepository('inventory');
-  const inventoryData = await inventoryRepo.find();
+  const inventoryData = await inventoryRepo.find({ relations: ['chairs'] });
 
   res.render('planner', {
     inventoryData,

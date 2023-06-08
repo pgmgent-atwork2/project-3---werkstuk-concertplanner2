@@ -30,4 +30,12 @@ export default new EntitySchema({
       type: 'varchar',
     },
   },
+  relations: {
+    chairs: {
+      target: 'chairs',
+      type: 'one-to-many',
+      cascade: true,
+      inverseSide: 'inventory',
+    },
+  },
 });
