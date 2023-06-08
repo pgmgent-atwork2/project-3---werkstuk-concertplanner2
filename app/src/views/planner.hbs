@@ -1,16 +1,19 @@
 {{> header}}
 
 <main>
-    <button id="save" onclick="downloadPDF()" class="no-print">
-      Save as PDF
-    </button>
-    <label for="collision">collision</label>
-    <input type="checkbox" name="collision" id="collision" checked>
-    <label for="snap">snap</label>
-    <input type="checkbox" name="snap" id="snap" checked>
     <div class="box">
     <div class="canvas" id="canvas"></div>
      <ul class="sidepanel planner-list">
+      <button id="save" onclick="downloadPDF()" class="no-print">
+      Save as PDF
+    </button>
+    <div class="planner-toggles">
+      <label for="collision">collision</label>
+      <input type="checkbox" name="collision" id="collision" checked>
+      <label for="snap">snap</label>
+      <input type="checkbox" name="snap" id="snap" checked>
+    </div>
+    
       {{#each inventoryData as |item|}}
         {{#if item.name}}
           <li>
