@@ -1,7 +1,7 @@
 <section class='inventory'>
   {{#each inventoryData}}
     <div class='inventory_item'>
-      <img class='item__image' src='images/orkeststoel.jpg' alt='' />
+      <img class='item__image' src='images/{{image}}' alt='icoon voor item' />
 
       <form action='/changeItem/{{id}}' method='post' class='change'>
         <input type='hidden' name='change' value='{{id}}' />
@@ -18,14 +18,14 @@
           name='count'
           value='{{count}}'
         />
-        <button class="button--edit" type='submit'>
+        <button class='button--edit' type='submit'>
           edit
         </button>
       </form>
 
       <form action='/deleteItem/{{id}}' method='post'>
         <input type='hidden' name='delete' value='{{id}}' />
-        <button class="button--delete" type='submit'>
+        <button class='button--delete' type='submit'>
           delete
         </button>
       </form>
