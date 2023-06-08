@@ -37,10 +37,12 @@ bg.height = app.screen.height;
 let objects = [];
 console.log(objects);
 let draggingObj = null;
+app.stage.sortableChildren = true;
 app.stage.interactive = true;
 app.stage.hitArea = app.screen;
 app.stage.on('pointerup', onDragEnd);
 app.stage.on('pointerupoutside', onDragEnd);
+
 let moved = false;
 
 function addObject(type, width, height, rotate) {
@@ -58,22 +60,31 @@ function addObject(type, width, height, rotate) {
 
     if (type === 'pupiters') {
       obj.tint = 0x0000ff;
+      obj.zIndex = 1;
     } else if (type === 'muziekantenstoelen') {
       obj.tint = 0xff0000;
+      obj.zIndex = 1;
     } else if (type === 'orkeststoel') {
       obj.tint = 0x00ff00;
+      obj.zIndex = 1;
     } else if (type === 'pianostoelen') {
       obj.tint = 0xffff00;
-    } else if (type === 'podiumelement S') {
-      obj.tint = 0xff00ff;
-    } else if (type === 'podiumelement M') {
-      obj.tint = 0x00ffff;
-    } else if (type === 'podiumelement L') {
-      obj.tint = 0xff8000;
-    } else if (type === 'podiumelement XL') {
-      obj.tint = 0x000000;
+      obj.zIndex = 1;
     } else if (type === 'piano steinway D') {
       obj.tint = 0x808080;
+      obj.zIndex = 1;
+    } else if (type === 'podiumelement S') {
+      obj.tint = 0xff00ff;
+      obj.zIndex = 0;
+    } else if (type === 'podiumelement M') {
+      obj.tint = 0x00ffff;
+      obj.zIndex = 0;
+    } else if (type === 'podiumelement L') {
+      obj.tint = 0xff8000;
+      obj.zIndex = 0;
+    } else if (type === 'podiumelement XL') {
+      obj.tint = 0x000000;
+      obj.zIndex = 0;
     }
 
     objects.push(obj);
@@ -139,10 +150,22 @@ function onDragMove(ev) {
     // draggingObj.parent.toLocal(ev.global, null, dragTarget.position);
     draggingObj.position.copyFrom(ev.global);
     moved = true;
+    let collision = true;
+    let snap = true;
+
+    document.getElementById('snap').checked ? (snap = true) : (snap = false);
+
+    document.getElementById('collision').checked
+      ? (collision = true)
+      : (collision = false);
 
     // check collision with other objects
     for (let obj of objects) {
-      if (obj !== draggingObj && hitTestRectangle(draggingObj, obj)) {
+      if (
+        obj !== draggingObj &&
+        hitTestRectangle(draggingObj, obj) &&
+        collision
+      ) {
         // snap to the nearest edge
         const ox = obj.x - draggingObj.x;
         const oy = obj.y - draggingObj.y;
@@ -153,19 +176,19 @@ function onDragMove(ev) {
           // snap to left or right edge
           if (ox > 0) {
             draggingObj.x = obj.x - obj.width / 2 - draggingObj.width / 2;
-            draggingObj.y = obj.y;
+            snap ? (draggingObj.y = obj.y) : null;
           } else {
             draggingObj.x = obj.x + obj.width / 2 + draggingObj.width / 2;
-            draggingObj.y = obj.y;
+            snap ? (draggingObj.y = obj.y) : null;
           }
         } else {
           // snap to top or bottom edge
           if (oy > 0) {
             draggingObj.y = obj.y - obj.height / 2 - draggingObj.height / 2;
-            draggingObj.x = obj.x;
+            snap ? (draggingObj.x = obj.x) : null;
           } else {
             draggingObj.y = obj.y + obj.height / 2 + draggingObj.height / 2;
-            draggingObj.x = obj.x;
+            snap ? (draggingObj.x = obj.x) : null;
           }
         }
       }
@@ -221,5 +244,6 @@ function downloadPDF() {
   imageURL = img.toDataURL();
   let pdf = new jsPDF();
   pdf.addImage(imageURL, 'png', 0, 0, 200, 200);
+
   pdf.save('a4.pdf');
 }
