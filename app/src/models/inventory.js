@@ -24,6 +24,12 @@ export default new EntitySchema({
     },
     width: {
       type: 'int',
+    },
+    image:{
+      type: 'varchar',
+    },
+    color: {
+      type: 'varchar',
     }
   },
 });
