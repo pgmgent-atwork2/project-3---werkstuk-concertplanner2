@@ -64,8 +64,8 @@ export const addEvent = async (req, res) => {
   // errors
   const formErrors = req.formErrors;
 
-  const metaRepository = DataSource.getRepository('UserMeta');
-  const metaData = await metaRepository.find({ relations: ['user'] });
+const metaRepository = DataSource.getRepository("UserMeta");
+const metaData = await metaRepository.find({relations: ["user"]})
 
   // input fields
   const inputs = [
@@ -80,6 +80,7 @@ export const addEvent = async (req, res) => {
 
   const roleRepository = await DataSource.getRepository('Role');
   const roles = await roleRepository.find();
+
 
   // render the register page
   res.render('admin', {

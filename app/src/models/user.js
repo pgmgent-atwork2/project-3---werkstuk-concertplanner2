@@ -34,7 +34,7 @@ export default new EntitySchema({
     },
     events: {
       target: "Events",
-      type: "one-to-one",
+      type: "one-to-many",
       cascade: true,
       inverseSide: "user",
     }

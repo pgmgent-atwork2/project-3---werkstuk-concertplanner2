@@ -56,6 +56,8 @@ import {
   postItem,
   updateItem
 } from './controllers/inventory.js';
+import { postEvent as postEventAPI } from './controllers/api/events.js';
+import { postEvent } from './controllers/events.js';
 
 //create express  app
 const app = express();
@@ -90,8 +92,8 @@ app.set('views', path.join(SOURCE_PATH, 'views'));
 app.get('/', jwtAuth, home);
 app.get('/addOrkestUser', jwtAuth, addOrkestUser);
 app.post('/addOrkestUser', registerAuthentication, postRegister, addOrkestUser);
-app.get('/addEvent', jwtAuth, addEvent)
-app.post('/addEvent', jwtAuth, addEvent)
+app.get('/addEvent', jwtAuth , addEvent)
+app.post('/addEvent', jwtAuth, postEvent, addEvent)
 app.get('/login', login);
 app.post('/login', loginAuthentication, postLogin, login);
 app.post('/logout', logout);
@@ -115,6 +117,9 @@ app.get('/api/inventory/:id', getSpecificItem);
 app.post('/api/inventory', postItemAPI);
 app.put('/api/inventory', updateItemAPI);
 app.delete('/api/inventory/:id', deleteItemAPI);
+
+//event
+app.post('/api/events', postEventAPI);
 
 app.get('/', home);
 const port = process.env.PORT || 3000;
