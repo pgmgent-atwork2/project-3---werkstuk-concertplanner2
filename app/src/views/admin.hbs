@@ -29,7 +29,8 @@
     <form method="post" action="/addEvent">
     <select name="orkests" id="orkestSelect">
         {{#each metaData}}
-          <option value="{{id}}">{{orkestName}}</option>
+          <option value="{{user.id}}">{{orkestName}}</option>
+         
         {{/each}}
     </select>
       {{#each inputs}}

@@ -212,7 +212,7 @@ app.stage.addChild(bg, ...objects);
 
 function downloadPDF() {
   const canvas = document.querySelector('canvas');
-  const context = canvas.getContext('2d');
+  // const context = canvas.getContext('2d');
   let img = new Image();
   let imageURL;
 
