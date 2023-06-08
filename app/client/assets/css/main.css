@@ -23,6 +23,7 @@
   --kaki--hover: hsl(33, 42%, 80%);
   --red: hsl(5, 80%, 58%);
   --yellow: hsl(36, 89%, 48%);
+  --hover--edit: hsl(36, 100%, 33%);
   --border_color: hsla(0, 0%, 0%, 0.094);
   --main_color: hsl(0, 0%, 85%);
   --hover_color--blue: hsl(220, 100%, 39%);
@@ -31,6 +32,8 @@
   --overlay-background: hsla(0, 0%, 0%, 0.838);
   --overlay-text: #eee;
   --grey--dark: hsl(0, 0%, 32%);
+  --green: hsl(122, 100%, 50%);
+  --save--hover: hsl(122, 100%, 30%);
 
   --font-size--h1: 32px;
   --font-size--h2: 24px;
@@ -89,7 +92,8 @@ button:hover {
   border: none;
 }
 
-.button--logout:hover {
+.button--logout:hover,
+.button--delete:hover {
   background-color: var(--hover_color--red);
 }
 
@@ -124,11 +128,9 @@ button:hover {
   padding-bottom: 1rem;
   margin-right: 6rem;
   padding-top: 0.5rem;
-  background: linear-gradient(
-    to right,
-    var(--kaki) 50%,
-    var(--kaki--hover) 50%
-  );
+  background: linear-gradient(to right,
+      var(--kaki) 50%,
+      var(--kaki--hover) 50%);
   background-size: 200% 100%;
   background-position: right bottom;
   transition: all 0.5s ease-out;
@@ -211,22 +213,39 @@ button:hover {
 .rotate-check {
   width: fit-content;
   margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 @media (max-width: 80.3125rem) {
   .planner-list li {
     flex-direction: column;
-    // align-items: flex-start;
+    align-items: flex-start;
   }
-  .planner-add {
-    display: flex;
-    gap: 1rem;
-  }
+}
+
+.planner-add {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
 }
 
 .planner-add .button--add {
   font-size: 1rem;
   border-radius: 11px;
+}
+
+.no-print {
+  background-color: var(--green);
+  border: none;
+  border-radius: 10px;
+  padding: 0.5rem;
+}
+
+.no-print:hover {
+  background-color: var(--save--hover);
+  transition: all 0.5s ease-in-out;
 }
 
 /* main container user */
@@ -307,6 +326,15 @@ button:hover {
   padding: 1rem 2rem;
   border: none;
   border-radius: 20px;
+}
+
+.button--add:hover,
+.button--contact:hover,
+.button--login:hover,
+.button--submit:hover,
+.button--view:hover {
+  background-color: var(--hover_color--blue);
+  transition: all 0.5s ease-in-out;
 }
 
 /* inventory */
@@ -413,6 +441,10 @@ button:hover {
   position: absolute;
   top: 25%;
   right: 20%;
+}
+
+.button--edit:hover {
+  background-color: var(--hover--edit);
 }
 
 .button--delete {
@@ -612,7 +644,7 @@ footer h2 {
   margin-bottom: 0.5rem;
 }
 
-.input input {
+#toggleview .input input {
   width: 80%;
   padding: 0.5rem;
   border: none;
