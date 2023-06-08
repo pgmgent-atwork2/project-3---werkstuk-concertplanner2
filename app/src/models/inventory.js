@@ -1,8 +1,6 @@
 import typeorm from 'typeorm';
 
-const {
-  EntitySchema
-} = typeorm;
+const { EntitySchema } = typeorm;
 
 export default new EntitySchema({
   name: 'inventory',
@@ -25,11 +23,11 @@ export default new EntitySchema({
     width: {
       type: 'int',
     },
-    image:{
+    image: {
       type: 'varchar',
     },
     color: {
       type: 'varchar',
-    }
+    },
   },
 });

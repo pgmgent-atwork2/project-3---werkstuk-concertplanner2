@@ -22,38 +22,37 @@ export const postItem = async (req, res, next) => {
       res.redirect(`/inventory`);
     }
   } catch (error) {
-    error.message
+    error.message;
   }
-}
+};
 
 export const updateItem = async (req, res, next) => {
   try {
-
-    const inventoryRepository = DataSource.getRepository("inventory");
+    const inventoryRepository = DataSource.getRepository('inventory');
     const inventory = await inventoryRepository.findOneBy({
       id: req.body.changeName,
     });
     const newItem = {
       ...inventory,
-      ...req.body
+      ...req.body,
     };
 
     // save the data in the database
     await inventoryRepository.save(newItem);
 
     // give a response to the client
-    res.redirect("/inventory")
+    res.redirect('/inventory');
   } catch (error) {
-    error.message
+    error.message;
   }
-}
+};
 
 export const deleteItem = async (req, res, next) => {
   try {
     const id = req.body.delete;
     const inventoryRepository = DataSource.getRepository('inventory');
     const inventory = await inventoryRepository.findOneBy({
-      id
+      id,
     });
 
     console.log(id);
@@ -61,9 +60,8 @@ export const deleteItem = async (req, res, next) => {
       await inventoryRepository.delete(inventory);
     }
 
-    res.redirect("/inventory")
-
+    res.redirect('/inventory');
   } catch (error) {
-    error.message
+    error.message;
   }
-}
+};

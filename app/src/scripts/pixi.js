@@ -64,9 +64,6 @@ function addObject(type, width, height, rotate) {
     } else if (type === 'muziekantenstoelen') {
       obj.tint = 0xff0000;
       obj.zIndex = 1;
-    } else if (type === 'orkeststoel') {
-      obj.tint = 0x00ff00;
-      obj.zIndex = 1;
     } else if (type === 'pianostoelen') {
       obj.tint = 0xffff00;
       obj.zIndex = 1;
