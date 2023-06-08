@@ -20,7 +20,7 @@ export default new EntitySchema({
   relations: {
     user: {
       target: "User",
-      type: "one-to-one",
+      type: "many-to-one",
       joinColumn: {
         name: "user_id",
       },

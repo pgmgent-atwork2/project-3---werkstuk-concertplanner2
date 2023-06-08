@@ -58,8 +58,6 @@ export const postRegister = async (req, res, next) => {
       // make user repository instance
       const userRepository = await DataSource.getRepository("User");
       const roleRepository = await DataSource.getRepository("Role");
-      const metaRepository = await DataSource.getRepository("UserMeta");
-      const dateRepository = await DataSource.getRepository("Date");
 
       
       const role = await roleRepository.findOne({
