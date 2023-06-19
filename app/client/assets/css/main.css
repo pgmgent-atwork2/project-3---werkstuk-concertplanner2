@@ -128,9 +128,11 @@ button:hover {
   padding-bottom: 1rem;
   margin-right: 6rem;
   padding-top: 0.5rem;
-  background: linear-gradient(to right,
-      var(--kaki) 50%,
-      var(--kaki--hover) 50%);
+  background: linear-gradient(
+    to right,
+    var(--kaki) 50%,
+    var(--kaki--hover) 50%
+  );
   background-size: 200% 100%;
   background-position: right bottom;
   transition: all 0.5s ease-out;
@@ -176,15 +178,23 @@ button:hover {
   gap: 0.5rem;
 }
 
+@media (max-width: 930px) {
+  .box .planner-list {
+    margin-right: 0rem;
+    max-height: 550px;
+    overflow-y: scroll;
+  }
+}
+
 .planner-list li {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   padding: 1rem 2rem;
-
+  max-width: 28.5rem;
   border-radius: 10px;
-
+  flex-wrap: wrap;
   border: none;
 }
 

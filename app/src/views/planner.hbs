@@ -24,6 +24,15 @@
         {{#if item.name}}
           <li>
             <label for="{{item.name}}" class="planner-list__title">{{item.name}}</label>
+            
+            <div class="planner-add">
+              <button onclick="addObject('{{item.name}}', '{{item.width}}', '{{item.length}}', true, `${document.getElementById('chair-types').value}`)" name="{{item.name}}" class="button--add">toevoegen</button>
+              <div class="rotate-check">
+                <label for="{{item.name}}">⟳</label>
+                <input type="checkbox" name="{{item.name}}" id="{{item.name}}">
+              </div>
+              
+            </div>
             {{#if item.chairs}}
               <select name="chair-types" id="chair-types">
                 {{#each item.chairs as |chair|}}
@@ -31,13 +40,6 @@
                 {{/each}}
               </select>
             {{/if}}
-            <div class="planner-add">
-              <button onclick="addObject('{{item.name}}', '{{item.width}}', '{{item.length}}', true, `${document.getElementById('chair-types').value}`)" name="{{item.name}}" class="button--add">toevoegen</button>
-              <div class="rotate-check">
-                <label for="{{item.name}}">⟳</label>
-                <input type="checkbox" name="{{item.name}}" id="{{item.name}}">
-              </div>
-            </div>
           </li>
         {{/if}}
       {{/each}}
