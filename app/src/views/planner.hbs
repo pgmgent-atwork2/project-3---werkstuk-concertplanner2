@@ -6,7 +6,29 @@
       <h2>Ga naar home</h2>
     </div>
     <div class="box">
-    <div class="canvas" id="canvas"></div>
+    <div class="canvas-box" id="canvas-box"> 
+      <div class="canvas" id="canvas"></div>
+      <div class="legend" id="legend" style="line-height: 1 !important;">
+        {{#each inventoryData as |item|}}
+          {{#if item.name }}
+          <div>
+              <div class="legend__item__name">{{item.name}}</div>
+              </div>
+              <div class="legend__item__color" style="background-color: {{item.color}}; width: 1rem; height: 1.5rem"></div>
+          {{/if}}
+        {{/each}}
+        {{#each inventoryData as |item|}}
+          {{#if item.chairs}}
+            {{#each item.chairs as |chair|}}
+            <div>
+              <div class="legend__item__name">{{chair.name}}</div>
+              </div>
+              <div class="legend__item__color" style="background-color: {{chair.color}}; width: 1rem; height: 1.5rem;"></div>
+            {{/each}}
+          {{/if}}
+        {{/each}}
+      </div>
+    </div>
      <ul class="sidepanel planner-list">
       <button id="save" onclick="downloadPDF()" class="no-print">
       Save as PDF
@@ -54,5 +76,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"
     integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous">
   </script>
+  <script src="http://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
   <script src="scripts/pixi.js"></script>
 </main>

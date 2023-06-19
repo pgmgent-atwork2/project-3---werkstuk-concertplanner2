@@ -204,14 +204,24 @@ function hitTestRectangle(r1, r2) {
 // add objects to stage
 app.stage.addChild(bg, ...objects);
 
+html2canvas(document.querySelector('#legend')).then((canvas) => {
+  document.body.appendChild(canvas).classList.add('hidden', 'legend-canvas');
+  let img = canvas.toDataURL('image/png');
+  pdf.addPage();
+  pdf.addImage(img, 'png', 0, 0, 200, 200);
+});
+
 function downloadPDF() {
-  const canvas = document.querySelector('canvas');
   let img = new Image();
   let imageURL;
   img = app.renderer.plugins.extract.canvas(app.stage);
+  console.log(img);
   imageURL = img.toDataURL();
   let pdf = new jsPDF();
   pdf.addImage(imageURL, 'png', 0, 0, 200, 200);
+  img = document.querySelector('.legend-canvas');
+  imageURL = img.toDataURL();
+  pdf.addImage(imageURL, 'png', 10, 200, 150, 75);
 
   pdf.save('a4.pdf');
 }

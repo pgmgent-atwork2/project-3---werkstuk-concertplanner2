@@ -181,8 +181,10 @@ button:hover {
 @media (max-width: 930px) {
   .box .planner-list {
     margin-right: 0rem;
+    margin-left: 1rem;
     max-height: 550px;
     overflow-y: scroll;
+    overflow-x: hidden;
   }
 }
 
@@ -228,6 +230,13 @@ button:hover {
   gap: 0.5rem;
 }
 
+@media (max-width: 930px) {
+  .rotate-check {
+    margin-left: 0;
+    flex-direction: column;
+  }
+}
+
 @media (max-width: 80.3125rem) {
   .planner-list li {
     flex-direction: column;
@@ -256,6 +265,23 @@ button:hover {
 .no-print:hover {
   background-color: var(--save--hover);
   transition: all 0.5s ease-in-out;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  /* margin-top: 1rem; */
+  padding-left: 1rem;
+  width: 29.375rem;
+}
+
+/* .legend-canvas {
+  height: fit-content;
+} */
+
+.hidden {
+  display: none;
 }
 
 /* main container user */
