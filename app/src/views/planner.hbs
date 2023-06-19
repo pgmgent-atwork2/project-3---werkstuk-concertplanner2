@@ -1,66 +1,54 @@
 {{> header}}
 
 <main>
-  <div class="button--back">
-    <a href="/"><img class="image--back" src="images/back-button.png" alt="" /></a>
-    <h2>Ga naar home</h2>
-  </div>
-  <div class="box">
+    <div class="box">
     <div class="canvas" id="canvas"></div>
-    <ul class="sidepanel planner-list">
+     <ul class="sidepanel planner-list">
       <button id="save" onclick="downloadPDF()" class="no-print">
-        Save as PDF
-      </button>
-      <div class="planner-toggles">
-        <label for="collision">collision</label>
-        <input type="checkbox" name="collision" id="collision" checked>
-        <label for="snap">snap</label>
-        <input type="checkbox" name="snap" id="snap" checked>
-      </div>
-
-
-
+      Save as PDF
+    </button>
+    <div class="planner-toggles">
+      <label for="collision">collision</label>
+      <input type="checkbox" name="collision" id="collision" checked>
+      <label for="snap">snap</label>
+      <input type="checkbox" name="snap" id="snap" checked>
+    </div>
+  
+    
+    
       {{#each inventoryData as |item|}}
-      {{#if item.name}}
-      <li>
-        <label for="{{item.name}}" class="planner-list__title">{{item.name}}</label>
-        {{#if item.chairs}}
-        <select name="chair-types" id="chair-types">
-          {{#each item.chairs as |chair|}}
-          <option value="{{chair.color}}">{{chair.name}}</option>
-          {{/each}}
-        </select>
+        {{#if item.name}}
+          <li>
+            <label for="{{item.name}}" class="planner-list__title">{{item.name}}</label>
+            {{#if item.chairs}}
+              <select name="chair-types" id="chair-types">
+                {{#each item.chairs as |chair|}}
+                  <option value="{{chair.color}}">{{chair.name}}</option>  
+                {{/each}}
+              </select>
+            {{/if}}
+            <div class="planner-add">
+              <button onclick="addObject('{{item.name}}', '{{item.width}}', '{{item.length}}', true, `${document.getElementById('chair-types').value}`)" name="{{item.name}}" class="button--add">toevoegen</button>
+              <div class="rotate-check">
+                <label for="{{item.name}}">⟳</label>
+                <input type="checkbox" name="{{item.name}}" id="{{item.name}}">
+              </div>
+            </div>
+          </li>
         {{/if}}
-        <div class="planner-add">
-          <button
-            onclick="addObject('{{item.name}}', '{{item.width}}', '{{item.length}}', true, `${document.getElementById('chair-types').value}`)"
-            name="{{item.name}}" class="button--add">toevoegen</button>
-          <div class="rotate-check">
-            <label for="{{item.name}}">⟳</label>
-            <input type="checkbox" name="{{item.name}}" id="{{item.name}}">
-          </div>
-        </div>
-      </li>
-      {{/if}}
       {{/each}}
-    </ul>
-  </div>
+    </ul> 
+    </div>
 
-  {{> footer}}
-
-
-  <script>
-    window.inventory = {
-      {
-        {
-          jsData
-        }
-      }
-    }
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/pixi.js@7.x/dist/pixi.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"
-    integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous">
-  </script>
-  <script src="scripts/pixi.js"></script>
+    {{> footer}}
+    
+    
+    <script>window.inventory = {{{jsData}}}</script>
+    <script src="https://cdn.jsdelivr.net/npm/pixi.js@7.x/dist/pixi.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"
+      integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/"
+      crossorigin="anonymous"
+    ></script>
+    <script src="scripts/pixi.js"></script>
 </main>
