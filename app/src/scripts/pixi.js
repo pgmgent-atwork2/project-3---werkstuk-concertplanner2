@@ -34,7 +34,7 @@ app.stage.on('pointerupoutside', onDragEnd);
 
 let moved = false;
 
-function addObject(type, width, height, rotate, color) {
+function addObject(type, width, height, rotate, color, itemColor) {
   console.log(width, height);
   let obj;
   let objIndex = inventoryData.findIndex((item) => item.name === type);
@@ -48,28 +48,28 @@ function addObject(type, width, height, rotate, color) {
     console.log(inventoryData[objIndex].count);
 
     if (type === 'pupiters') {
-      obj.tint = 0x0000ff;
+      obj.tint = itemColor;
       obj.zIndex = 1;
     } else if (type === 'muziekantenstoelen') {
       obj.tint = color;
       obj.zIndex = 1;
     } else if (type === 'pianostoelen') {
-      obj.tint = 0xffff00;
+      obj.tint = itemColor;
       obj.zIndex = 1;
     } else if (type === 'piano steinway D') {
-      obj.tint = 0x808080;
+      obj.tint = itemColor;
       obj.zIndex = 1;
     } else if (type === 'podiumelement S') {
-      obj.tint = 0xff00ff;
+      obj.tint = itemColor;
       obj.zIndex = 0;
     } else if (type === 'podiumelement M') {
-      obj.tint = 0x00ffff;
+      obj.tint = itemColor;
       obj.zIndex = 0;
     } else if (type === 'podiumelement L') {
-      obj.tint = 0xff8000;
+      obj.tint = itemColor;
       obj.zIndex = 0;
     } else if (type === 'podiumelement XL') {
-      obj.tint = 0x000000;
+      obj.tint = itemColor;
       obj.zIndex = 0;
     }
 
