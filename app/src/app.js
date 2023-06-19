@@ -8,7 +8,6 @@ import {
 import {
   SOURCE_PATH
 } from './constants.js';
-// import handlebarsHelpers from "./lib/handlebarsHelpers.js";
 
 import {
   addEvent,
@@ -56,8 +55,12 @@ import {
   postItem,
   updateItem
 } from './controllers/inventory.js';
-import { postEvent as postEventAPI } from './controllers/api/events.js';
-import { postEvent } from './controllers/events.js';
+import {
+  postEvent as postEventAPI
+} from './controllers/api/events.js';
+import {
+  postEvent
+} from './controllers/events.js';
 
 //create express  app
 const app = express();
@@ -77,11 +80,7 @@ app.use('/scripts', express.static(path.join(SOURCE_PATH, '/scripts')));
 
 // ----------------HANDLEBARS---------------//
 const hbs = create({
-  // helpers: handlebarsHelpers,
   extname: 'hbs',
-  // defaultLayout: "main",
-  // layoutsDir: path.resolve("src", "views", "layouts"),
-  // partialsDir: path.resolve("src", "views", "partials"),
 });
 
 app.engine('hbs', hbs.engine);
@@ -92,7 +91,7 @@ app.set('views', path.join(SOURCE_PATH, 'views'));
 app.get('/', jwtAuth, home);
 app.get('/addOrkestUser', jwtAuth, addOrkestUser);
 app.post('/addOrkestUser', registerAuthentication, postRegister, addOrkestUser);
-app.get('/addEvent', jwtAuth , addEvent)
+app.get('/addEvent', jwtAuth, addEvent)
 app.post('/addEvent', jwtAuth, postEvent, addEvent)
 app.get('/login', login);
 app.post('/login', loginAuthentication, postLogin, login);
