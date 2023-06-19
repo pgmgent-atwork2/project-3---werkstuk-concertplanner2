@@ -22,17 +22,6 @@ let bg = PIXI.Sprite.from('./images/zaal.png');
 bg.width = app.screen.width;
 bg.height = app.screen.height;
 
-// create the draggable objects
-// let obj1 = PIXI.Sprite.from('./images/blue.png');
-
-// let obj2 = PIXI.Sprite.from('./images/blue.png');
-
-// let obj3 = PIXI.Sprite.from('./images/blue.png');
-
-// let obj4 = PIXI.Sprite.from('./images/blue.png');
-
-// let obj5 = PIXI.Sprite.from('./images/blue.png');
-
 // create variable for dragged object
 let objects = [];
 console.log(objects);
@@ -96,8 +85,6 @@ function makeObjectsDraggable(obj, width, height, type) {
   obj.interactive = true;
   obj.cursor = 'pointer';
   obj.buttonMode = true;
-
-  // obj.width = 1 * scale;
   obj.width = width * 2 * scale;
   obj.height = height * 2 * scale;
   if (document.getElementById(`${type}`).checked) {
@@ -106,7 +93,6 @@ function makeObjectsDraggable(obj, width, height, type) {
     obj.height = width * 2 * scale;
   }
   obj.anchor.set(0.5);
-  // obj.position.set(obj.width + 5, 5 + obj.height);
   obj.position.set(100, 100);
   obj.on('pointerdown', onDragStart, obj).on('pointermove', onDragMove);
 }
@@ -144,7 +130,6 @@ function onDragEnd() {
 
 function onDragMove(ev) {
   if (draggingObj && draggingObj.dragging) {
-    // draggingObj.parent.toLocal(ev.global, null, dragTarget.position);
     draggingObj.position.copyFrom(ev.global);
     moved = true;
     let collision = true;
@@ -212,31 +197,17 @@ function onDragMove(ev) {
 
 function hitTestRectangle(r1, r2) {
   // use bounding box to check intersection
-
-  // console.log(r1.getBounds().intersects(r2.getBounds()));
   const hit = r1.getBounds().intersects(r2.getBounds());
   return hit;
 }
-
-// function hitTestRectangles(r1, rectangles) {
-//   // Iterate through each pair of rectangles and check for intersection
-//   rectangles.forEach((rectangle) => {
-//     const hit = r1.getBounds().intersects(rectangle.getBounds());
-
-//     return hit;
-//   });
-// }
 
 // add objects to stage
 app.stage.addChild(bg, ...objects);
 
 function downloadPDF() {
   const canvas = document.querySelector('canvas');
-  // const context = canvas.getContext('2d');
   let img = new Image();
   let imageURL;
-
-  // img = app.renderer.extract.canvas(app.stage);
   img = app.renderer.plugins.extract.canvas(app.stage);
   imageURL = img.toDataURL();
   let pdf = new jsPDF();
