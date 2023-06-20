@@ -18,6 +18,7 @@ export const postItem = async (req, res, next) => {
         count: req.body.count,
         width: req.body.width,
         length: req.body.length,
+        image:"director-chair.png"
       });
       res.redirect(`/inventory`);
     }
