@@ -9,7 +9,7 @@ export const postItem = async (req, res, next) => {
       width: req.body.width,
       length: req.body.length,
     });
-    
+
     if (inventory) {
       res.redirect(`/inventory`);
     } else {
@@ -18,7 +18,8 @@ export const postItem = async (req, res, next) => {
         count: req.body.count,
         width: req.body.width,
         length: req.body.length,
-        image:"director-chair.png"
+        image: 'director-chair.png',
+        color: '#000000',
       });
       res.redirect(`/inventory`);
     }
