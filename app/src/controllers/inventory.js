@@ -31,13 +31,12 @@ export const updateItem = async (req, res, next) => {
   try {
     const inventoryRepository = DataSource.getRepository('inventory');
     const inventory = await inventoryRepository.findOneBy({
-      id: req.body.changeName,
+      id: req.body.changeItem,
     });
     const newItem = {
       ...inventory,
       ...req.body,
     };
-console.log(inventory)
     // save the data in the database
     await inventoryRepository.save(newItem);
 
@@ -56,7 +55,6 @@ export const deleteItem = async (req, res, next) => {
       id,
     });
 
-    console.log(id);
     if (inventory) {
       await inventoryRepository.delete(inventory);
     }

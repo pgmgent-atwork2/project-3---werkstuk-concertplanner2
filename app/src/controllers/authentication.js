@@ -99,7 +99,6 @@ export const postRegister = async (req, res, next) => {
       });
 
 
-      console.log(user);
 
       // save the user
       await userRepository.save(user);

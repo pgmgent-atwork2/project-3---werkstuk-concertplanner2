@@ -3,7 +3,6 @@ import DataSource from '../lib/DataSource.js'
 export const postEvent = async (req, res, next) => {
   try {
     const id = req.body.orkests;
-    console.log(id);
     const eventRepository = DataSource.getRepository("events");
     const event = await eventRepository.findOneBy({
       datum: req.body.date,
@@ -11,7 +10,6 @@ export const postEvent = async (req, res, next) => {
         id: id
       }
     });
-    console.log(req.body.date);
     if (event) {
       req.formErrors = [{
         message: "event bestaat al."
