@@ -36,7 +36,7 @@ export const updateItem = async (req, res, next) => {
       ...inventory,
       ...req.body,
     };
-
+console.log(inventory)
     // save the data in the database
     await inventoryRepository.save(newItem);
 

@@ -27,9 +27,6 @@ export default new EntitySchema({
       type: 'varchar',
       nullable: true,
     },
-    color: {
-      type: 'varchar',
-    },
   },
   relations: {
     chairs: {
