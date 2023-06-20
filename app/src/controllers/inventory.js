@@ -9,7 +9,7 @@ export const postItem = async (req, res, next) => {
       width: req.body.width,
       length: req.body.length,
     });
-
+    
     if (inventory) {
       res.redirect(`/inventory`);
     } else {
